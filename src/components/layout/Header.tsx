@@ -52,7 +52,7 @@ export const Header = () => {
           <div
             className={clsx(
               "absolute top-[64px] right-0 -z-1 h-screen w-full bg-white/20 backdrop-blur-sm transition-opacity duration-300 ease-in-out md:hidden",
-              openState.menu ? "opacity-100" : "opacity-0",
+              openState.menu ? "translate-x-0 opacity-100" : "-translate-x-full opacity-0",
             )}
           ></div>
           <ul
