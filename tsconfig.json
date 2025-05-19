@@ -20,8 +20,8 @@
     ],
     "paths": {
       "@/*": ["./src/*"],
-      "@public/*": ["./public/*"],
-    },
+      "@public/*": ["./public/*"]
+    }
   },
   "include": [
     "svgr.d.ts",
