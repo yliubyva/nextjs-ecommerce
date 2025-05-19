@@ -3,7 +3,7 @@ import Facebook from "@public/icons/icon-facebook.svg";
 import Instagram from "@public/icons/icon-instagram.svg";
 import GitHub from "@public/icons/icon-github.svg";
 
-export function ListSocials() {
+export function SocialsList() {
   const socialsList = [
     { name: "x", component: <X />, src: "http://x.com" },
     { name: "facebook", component: <Facebook />, src: "http://facebook.com" },
