@@ -2,6 +2,14 @@
 @import "tailwindcss";
 
 @theme {
+  --animate-scroll: scroll 20s linear infinite;
+
+  @keyframes scroll {
+    to {
+      transform: translateX(calc(-100% - 10%));
+    }
+  }
+
   --color-text-primary: rgba(0, 0, 0, 0.6);
   --color-heading-background: rgba(0, 0, 0);
   --color-rating-stars: rgba(255, 198, 51, 1);
