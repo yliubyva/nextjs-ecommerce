@@ -5,7 +5,7 @@ import { Container } from "@/components/ui-kit/Container";
 import { useProducts } from "@/hooks/useProducts";
 
 export const NewArrivals = () => {
-  const { products } = useProducts();
+  const { products, isLoading } = useProducts();
 
   const sortByDate = (products: Product[]): Product[] => {
     const productsWithDate = products.map((p) => ({
@@ -21,7 +21,11 @@ export const NewArrivals = () => {
   return (
     <section className="mb-[40px] xl:mb-[64px]">
       <Container>
-        <PreviewList title="New Arrivals" productList={sortByDate(products)} />
+        <PreviewList
+          title="New Arrivals"
+          productList={sortByDate(products)}
+          isLoading={isLoading}
+        />
       </Container>
     </section>
   );

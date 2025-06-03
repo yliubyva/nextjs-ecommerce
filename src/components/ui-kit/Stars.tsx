@@ -15,7 +15,7 @@ export const Stars: React.FC<Props> = ({ rating, showNum }) => {
 
   return (
     <div className="flex gap-[11px]">
-      <div className="flex gap-[4px]">
+      <div className="flex h-[16px] gap-[4px] md:h-[18px]">
         {Array.from({ length: fullStars }).map((_, i) => (
           <Image
             key={`full-${i}`}

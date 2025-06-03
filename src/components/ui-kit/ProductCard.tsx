@@ -46,3 +46,16 @@ export const ProductCard: React.FC<Props> = ({
     </div>
   );
 };
+
+export const ProductCardSkeleton = () => {
+  return (
+    <div className="w-full max-w-[198px] animate-pulse md:max-w-[295px] xl:h-[415px]">
+      <div className="mb-[10px] h-[200px] w-[198px] rounded-3xl bg-gray-200 md:mb-[16px] md:h-[298px] md:w-[295px]"></div>
+      <div className="flex flex-col gap-[4px] xl:gap-[8px]">
+        <div className="h-[24px] w-3/4 rounded bg-gray-300 xl:h-[28px]"></div>
+        <div className="h-[24px] w-3/5 rounded bg-gray-200"></div>
+        <div className="h-[28px] w-1/2 rounded bg-gray-300 xl:h-[32px]"></div>
+      </div>
+    </div>
+  );
+};
