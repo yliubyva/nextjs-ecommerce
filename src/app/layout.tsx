@@ -20,9 +20,7 @@ export default function RootLayout({
         <header className="fixed right-0 left-0 z-100 bg-white">
           <Header />
         </header>
-        <div className="mt-[64px] flex-[1] xl:mt-[96px]">
-          {children}
-        </div>
+        <div className="mt-[64px] flex-[1] xl:mt-[96px]">{children}</div>
         <footer className="mt-[184px] bg-(--color-category-background)">
           <Footer />
         </footer>
