@@ -13,7 +13,6 @@ export const products: Product[] = [
     colors: [
       {
         name: "black",
-        hex: "#000000",
         images: [
           "/clothes/tape-detail-tshirt-1.png",
           "/clothes/tape-detail-tshirt-2.png",
@@ -25,7 +24,6 @@ export const products: Product[] = [
       },
       {
         name: "white",
-        hex: "#ffffff",
         images: [
           "/clothes/tape-detail-tshirt-white-1.png",
           "/clothes/tape-detail-tshirt-white-2.png",
@@ -34,7 +32,6 @@ export const products: Product[] = [
       },
       {
         name: "gray",
-        hex: "#808080",
         images: [
           "/clothes/tape-detail-tshirt-gray-1.png",
           "/clothes/tape-detail-tshirt-gray-2.png",
@@ -64,7 +61,6 @@ export const products: Product[] = [
     colors: [
       {
         name: "blue",
-        hex: "#0000ff",
         images: [
           "/clothes/skinny-fit-jeans-1.png",
           "/clothes/skinny-fit-jeans-2.png",
@@ -93,7 +89,6 @@ export const products: Product[] = [
     colors: [
       {
         name: "red",
-        hex: "#ff0000",
         images: [
           "/clothes/checkered-shirt-1.png",
           "/clothes/checkered-shirt-2.png",
@@ -102,7 +97,6 @@ export const products: Product[] = [
       },
       {
         name: "blue",
-        hex: "#0000ff",
         images: [
           "/clothes/checkered-shirt-blue-1.png",
           "/clothes/checkered-shirt-blue-2.png",
@@ -111,7 +105,6 @@ export const products: Product[] = [
       },
       {
         name: "green",
-        hex: "#008000",
         images: [
           "/clothes/checkered-shirt-green-1.png",
           "/clothes/checkered-shirt-green-2.png",
@@ -141,7 +134,6 @@ export const products: Product[] = [
     colors: [
       {
         name: "orange",
-        hex: "#ffa500",
         images: [
           "/clothes/sleeve-striped-tshirt-1.png",
           "/clothes/sleeve-striped-tshirt-2.png",
@@ -150,7 +142,6 @@ export const products: Product[] = [
       },
       {
         name: "black",
-        hex: "#000000",
         images: [
           "/clothes/black-striped-tshirt-1.png",
           "/clothes/black-striped-tshirt-2.png",
@@ -180,7 +171,6 @@ export const products: Product[] = [
     colors: [
       {
         name: "green",
-        hex: "#008000",
         images: [
           "/clothes/vertical-striped-shirt-1.png",
           "/clothes/vertical-striped-shirt-2.png",
@@ -189,7 +179,6 @@ export const products: Product[] = [
       },
       {
         name: "black",
-        hex: "#000000",
         images: [
           "/clothes/vertical-striped-shirt-black-1.png",
           "/clothes/vertical-striped-shirt-black-2.png",
@@ -219,7 +208,6 @@ export const products: Product[] = [
     colors: [
       {
         name: "orange",
-        hex: "#ffa500",
         images: [
           "/clothes/courage-graphic-tshirt-1.png",
           "/clothes/courage-graphic-tshirt-2.png",
@@ -228,7 +216,6 @@ export const products: Product[] = [
       },
       {
         name: "green",
-        hex: "#008000",
         images: [
           "/clothes/courage-graphic-tshirt-green-1.png",
           "/clothes/courage-graphic-tshirt-green-2.png",
@@ -237,7 +224,6 @@ export const products: Product[] = [
       },
       {
         name: "black",
-        hex: "#000000",
         images: [
           "/clothes/courage-graphic-tshirt-black-1.png",
           "/clothes/courage-graphic-tshirt-black-2.png",
@@ -267,7 +253,6 @@ export const products: Product[] = [
     colors: [
       {
         name: "gray",
-        hex: "#808080",
         images: [
           "/clothes/loose-fit-shorts-1.png",
           "/clothes/loose-fit-shorts-2.png",
@@ -295,7 +280,6 @@ export const products: Product[] = [
     colors: [
       {
         name: "black",
-        hex: "#000000",
         images: [
           "/clothes/faded-skinny-jeans-1.png",
           "/clothes/faded-skinny-jeans-2.png",

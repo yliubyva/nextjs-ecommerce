@@ -1,6 +1,7 @@
+import { ColorName } from "@/data/colors";
+
 type Color = {
-  name: string;
-  hex: string;
+  name: ColorName;
   images: string[];
 };
 
@@ -30,4 +31,3 @@ export type Product = {
   tags?: string[];
   dressStyle: "Casual" | "Formal" | "Party" | "Gym";
 };
-
