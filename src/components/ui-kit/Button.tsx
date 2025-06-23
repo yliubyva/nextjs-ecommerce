@@ -1,4 +1,5 @@
 import clsx from "clsx";
+import Arrow from "@public/icons/arrow.svg";
 import Link from "next/link";
 
 type ButtonProps = {
@@ -37,6 +38,50 @@ export const Button: React.FC<ButtonProps> = ({
   return (
     <button onClick={onClick} {...props} className={finalClassName}>
       {label}
+    </button>
+  );
+};
+
+type PaginationButtonProps = {
+  label: string | number;
+  isActive?: boolean;
+} & React.ButtonHTMLAttributes<HTMLButtonElement>;
+
+export const PaginationButton: React.FC<PaginationButtonProps> = ({
+  label,
+  isActive,
+  ...props
+}) => {
+  return (
+    <button
+      {...props}
+      className={clsx(
+        "flex h-[36px] w-[36px] cursor-pointer items-center justify-center font-normal text-(--color-text-primary)",
+        isActive && "rounded-[8px] bg-(--color-border-container) text-black",
+      )}
+    >
+      {label}
+    </button>
+  );
+};
+
+type PaginationArrowButtonProps = {
+  label: string;
+  isNext: boolean;
+} & React.ButtonHTMLAttributes<HTMLButtonElement>;
+
+export const PaginationArrowButton: React.FC<PaginationArrowButtonProps> = ({
+  label,
+  isNext,
+  ...props
+}) => {
+  return (
+    <button
+      {...props}
+      className="flex cursor-pointer items-center gap-[8px] rounded-[8px] border border-(--color-border-container) p-[10px] font-normal"
+    >
+      <Arrow className={clsx(isNext && "order-2 scale-x-[-1]")} />
+      <span>{label}</span>
     </button>
   );
 };
