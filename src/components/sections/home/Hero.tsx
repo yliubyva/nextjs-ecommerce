@@ -26,11 +26,7 @@ export const Hero = () => {
                 garments, designed to bring out your individuality and cater to
                 your sense of style.
               </p>
-              <Button
-                isPrimaryButton
-                label="Shop Now"
-                onClick={() => console.log("clicked 'shop now'")}
-              />
+              <Button variant="primary" label="Shop Now" href="/shop" />
             </div>
             <div className="grid-cols-[1fr 1px 1fr] md:grid-cols-[1fr 1px 1fr 1px 1fr] mx-auto grid max-w-[280px] justify-between justify-items-center md:mx-0 md:max-w-[600px]">
               {usp.map((item, index) => (

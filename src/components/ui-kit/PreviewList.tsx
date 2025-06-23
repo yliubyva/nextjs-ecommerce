@@ -63,11 +63,7 @@ export const PreviewList: React.FC<Props> = ({
       <div className="mb-[24px] flex w-full gap-[16px] self-start overflow-hidden sm:self-center xl:mb-[44px] xl:h-[415px]">
         {renderProductList()}
       </div>
-      <Button
-        isPrimaryButton={false}
-        label="View All"
-        onClick={() => alert("click all view")}
-      />
+      <Button variant="secondary" label="View All" href="/shop" />
     </div>
   );
 };
