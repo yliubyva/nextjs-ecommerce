@@ -5,6 +5,7 @@ import { Price } from "@/components/ui-kit/Price";
 
 type Props = {
   id: string;
+  category: string;
   productName: string;
   image: string;
   rating: number;
@@ -14,6 +15,7 @@ type Props = {
 
 export const ProductCard: React.FC<Props> = ({
   id,
+  category,
   productName,
   image,
   rating,
@@ -22,7 +24,7 @@ export const ProductCard: React.FC<Props> = ({
 }) => {
   return (
     <div className="w-full max-w-[198px] md:max-w-[295px] xl:h-[415px] xl:overflow-hidden xl:bg-white xl:transition-all xl:transition-discrete xl:hover:absolute xl:hover:h-[425px] xl:hover:rounded-[30px] xl:hover:p-[5px] xl:hover:drop-shadow-xl">
-      <Link href={`/product-detail/${id}`}>
+      <Link href={`/shop/${category}/${id}`}>
         <div className="mb-[10px] h-[200px] w-[198px] overflow-hidden rounded-3xl md:mb-[16px] md:h-[298px] md:w-full md:max-w-[295px]">
           <Image
             src={image}

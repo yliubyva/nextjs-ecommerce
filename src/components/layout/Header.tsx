@@ -52,7 +52,9 @@ export const Header = () => {
           <div
             className={clsx(
               "absolute top-[64px] right-0 -z-1 h-screen w-full bg-white/20 backdrop-blur-sm transition-opacity duration-300 ease-in-out md:hidden",
-              openState.menu ? "translate-x-0 opacity-100" : "-translate-x-full opacity-0",
+              openState.menu
+                ? "translate-x-0 opacity-100"
+                : "-translate-x-full opacity-0",
             )}
           ></div>
           <ul
@@ -80,13 +82,13 @@ export const Header = () => {
                   "transition-translate ml-[30px] flex flex-col justify-center gap-[30px] duration-200 ease-in-out md:absolute md:top-[45px] md:ml-0 md:h-[100px] md:w-[100px] md:bg-white md:pl-[10px] md:drop-shadow-xs xl:top-[60px]",
                   openState.shop
                     ? "h-full translate-y-0 opacity-100"
-                    : "relative -z-1 h-0 -translate-y-[30px] opacity-0",
+                    : "relative -z-1 hidden h-0 -translate-y-[30px] opacity-0",
                 )}
               >
-                <Link href="/" className="text-sm hover:opacity-50">
+                <Link href="/shop/men" className="text-sm hover:opacity-50">
                   Men
                 </Link>
-                <Link href="/" className="text-sm hover:opacity-50">
+                <Link href="/shop/women" className="text-sm hover:opacity-50">
                   Women
                 </Link>
               </div>
@@ -125,7 +127,7 @@ export const Header = () => {
             />
           </div>
           <div className="flex gap-[12px]">
-            <Link href="/">
+            <Link href="/cart">
               <Cart width={24} height={24} />
             </Link>
             <Account width={24} height={24} />

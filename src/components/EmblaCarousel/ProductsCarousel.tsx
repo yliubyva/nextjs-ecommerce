@@ -24,6 +24,7 @@ export const ProductsCarousel: React.FC<PropType> = ({ slides }) => {
               >
                 <ProductCard
                   id={item.id}
+                  category={item.category.toLowerCase()}
                   productName={item.title}
                   image={item.colors[0].images[0]}
                   rating={item.rating}
