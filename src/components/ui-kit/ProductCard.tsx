@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Stars } from "@/components/ui-kit/Stars";
 import { Price } from "@/components/ui-kit/Price";
+import clsx from "clsx";
 
 type Props = {
   id: string;
@@ -11,6 +12,7 @@ type Props = {
   rating: number;
   price: number;
   discount: number | null;
+  isHeroPage: boolean;
 };
 
 export const ProductCard: React.FC<Props> = ({
@@ -21,22 +23,37 @@ export const ProductCard: React.FC<Props> = ({
   rating,
   price,
   discount,
+  isHeroPage,
 }) => {
   return (
-    <div className="w-full max-w-[198px] md:max-w-[295px] xl:h-[415px] xl:overflow-hidden xl:bg-white xl:transition-all xl:transition-discrete xl:hover:absolute xl:hover:h-[425px] xl:hover:rounded-[30px] xl:hover:p-[5px] xl:hover:drop-shadow-xl">
+    <div
+      className={clsx(
+        "w-full xl:h-[415px] xl:overflow-hidden xl:bg-white xl:transition-all xl:transition-discrete xl:hover:absolute xl:hover:h-[425px] xl:hover:rounded-[30px] xl:hover:p-[5px] xl:hover:drop-shadow-xl",
+        isHeroPage
+          ? "max-w-[198px] md:max-w-[295px]"
+          : "xs:w-[172px] xs:h-[257px] h-[390px] xl:w-[295px]",
+      )}
+    >
       <Link href={`/shop/${category}/${id}`}>
-        <div className="mb-[10px] h-[200px] w-[198px] overflow-hidden rounded-3xl md:mb-[16px] md:h-[298px] md:w-full md:max-w-[295px]">
+        <div
+          className={clsx(
+            "relative mb-[10px] w-full overflow-hidden rounded-3xl xl:mb-[16px] xl:h-[298px]",
+            isHeroPage
+              ? "h-[200px] w-[198px] md:h-[298px] md:w-full md:max-w-[295px]"
+              : "xs:h-[174px] h-[275px]",
+          )}
+        >
           <Image
             src={image}
             alt={productName}
-            width={198}
-            height={200}
-            className="h-[200px] w-[198px] object-cover object-center md:h-[298px] md:w-[295px]"
+            fill
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            className="object-cover object-center"
           />
         </div>
         <div className="flex flex-col gap-[4px] xl:gap-[8px]">
           <p
-            className="w-[198px] overflow-hidden text-base font-medium text-nowrap text-ellipsis xl:w-full xl:text-xl"
+            className="w-full max-w-[198px] overflow-hidden text-base font-medium text-nowrap text-ellipsis xl:w-full xl:text-xl"
             title={productName}
           >
             {productName}

@@ -47,6 +47,7 @@ export const PreviewList: React.FC<Props> = ({
                     rating={item.rating}
                     price={item.price}
                     discount={item.discount}
+                    isHeroPage
                   />
                 </div>
               ),

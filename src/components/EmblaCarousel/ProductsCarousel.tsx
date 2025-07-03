@@ -13,7 +13,7 @@ export const ProductsCarousel: React.FC<PropType> = ({ slides }) => {
   });
 
   return (
-    <div className="overflow-hidden" ref={emblaRef}>
+    <div className="w-full overflow-hidden" ref={emblaRef}>
       <div className="mb-[24px] flex gap-[16px]">
         {slides.map(
           (item, index) =>
@@ -30,6 +30,7 @@ export const ProductsCarousel: React.FC<PropType> = ({ slides }) => {
                   rating={item.rating}
                   price={item.price}
                   discount={item.discount}
+                  isHeroPage
                 />
               </div>
             ),
