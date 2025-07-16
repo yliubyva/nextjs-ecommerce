@@ -3,7 +3,7 @@ import React from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { Container } from "./Container";
-import { formatSegment } from "@/utils/formatSegment";
+import { formatSegment } from "@/utils/string";
 import Arrow from "@public/icons/greater.svg";
 
 export const Breadcrumbs = () => {
