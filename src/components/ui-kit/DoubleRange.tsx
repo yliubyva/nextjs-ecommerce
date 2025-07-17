@@ -1,4 +1,5 @@
 import { Range } from "react-range";
+import clsx from "clsx";
 
 type Props = {
   min: number;
@@ -14,7 +15,7 @@ export const DoubleRange: React.FC<Props> = ({
   onValuesChange,
 }) => {
   return (
-    <div className="w-full py-6">
+    <div className="w-full px-[10px] pb-[26px]">
       <Range
         step={1}
         min={min}
@@ -41,7 +42,10 @@ export const DoubleRange: React.FC<Props> = ({
             <div
               key={key}
               {...restProps}
-              className="h-5 w-5 cursor-pointer rounded-full bg-black shadow-md"
+              className={clsx(
+                "flex h-5 w-5 cursor-pointer rounded-full bg-black shadow-md",
+                index === 0 ? "justify-start" : "justify-end",
+              )}
             >
               <div className="mt-[24px] text-sm">
                 ${index === 0 ? values[0] : values[1]}
