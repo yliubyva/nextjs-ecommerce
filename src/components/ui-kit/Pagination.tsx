@@ -24,7 +24,7 @@ export const Pagination: React.FC<Props> = ({
   return (
     <div className="flex items-center justify-between">
       <PaginationArrowButton
-        label="Prev"
+        label="Previous"
         isNext={false}
         onClick={() => handlePrevPage()}
       />

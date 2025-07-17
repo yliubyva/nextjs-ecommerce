@@ -8,7 +8,7 @@ export const NewsletterForm = () => {
 
   const handleBlur = () => {
     if (!email) {
-      setError("Please enter a email address.");
+      setError("Please enter an email address.");
     } else if (!validateEmail(email)) {
       setError("Please enter a valid email address.");
     } else {
