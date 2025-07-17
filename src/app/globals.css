@@ -9,6 +9,7 @@
       transform: translateX(calc(-100% - 10%));
     }
   }
+  --breakpoint-xs: 25rem;
 
   --color-text-primary: rgba(0, 0, 0, 0.6);
   --color-heading-background: rgba(0, 0, 0);

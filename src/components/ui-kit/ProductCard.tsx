@@ -31,7 +31,7 @@ export const ProductCard: React.FC<Props> = ({
         "w-full xl:h-[415px] xl:overflow-hidden xl:bg-white xl:transition-all xl:transition-discrete xl:hover:absolute xl:hover:h-[425px] xl:hover:rounded-[30px] xl:hover:p-[5px] xl:hover:drop-shadow-xl",
         isHeroPage
           ? "max-w-[198px] md:max-w-[295px]"
-          : "xs:w-[172px] xs:h-[257px] h-[390px] xl:w-[295px]",
+          : "xs:h-[257px] h-[390px] min-w-[175px] md:max-w-[295px] xl:w-[295px]",
       )}
     >
       <Link href={`/shop/${category}/${id}`}>
