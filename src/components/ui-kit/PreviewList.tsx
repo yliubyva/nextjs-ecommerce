@@ -3,31 +3,19 @@ import { Product } from "@/types/product";
 import { useWindowWidth } from "@/hooks/useWindowWidth";
 import { ProductsCarousel } from "@/components/EmblaCarousel/ProductsCarousel";
 import { Button } from "@/components/ui-kit/Button";
-import {
-  ProductCard,
-  ProductCardSkeleton,
-} from "@/components/ui-kit/ProductCard";
+import { ProductCard } from "@/components/ui-kit/ProductCard";
 
 type Props = {
   title: string;
   productList: Product[];
-  isLoading: boolean;
 };
 
-export const PreviewList: React.FC<Props> = ({
-  title,
-  productList,
-  isLoading,
-}) => {
+export const PreviewList: React.FC<Props> = ({ title, productList }) => {
   const width = useWindowWidth();
   const isMobile = width < 1240;
 
   const renderProductList = () => {
-    if (isLoading) {
-      return Array.from({ length: 4 }).map((_, i) => (
-        <ProductCardSkeleton key={i} />
-      ));
-    } else if (isMobile) {
+    if (isMobile) {
       return <ProductsCarousel slides={productList} />;
     } else {
       return (
