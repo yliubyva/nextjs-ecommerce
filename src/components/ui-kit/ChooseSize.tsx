@@ -1,3 +1,4 @@
+import { isSelected, toggleItem } from "@/utils/selection-utils";
 import clsx from "clsx";
 
 type SizeSelectBaseProps = {
@@ -11,12 +12,7 @@ const SizeSelectBase: React.FC<SizeSelectBaseProps> = ({
   selectedSize,
   onSizeChange,
 }) => {
-  const isSelectedSize = (size: string) => {
-    if (Array.isArray(selectedSize)) {
-      return selectedSize.includes(size);
-    }
-    return selectedSize === size;
-  };
+  const isSelectedSize = (size: string) => isSelected(selectedSize, size);
   return (
     <div>
       <div className="flex flex-wrap gap-[8px] xl:gap-[16px]">
@@ -48,13 +44,8 @@ export const MultiSizeSelect: React.FC<MultiSizeSelectProps> = ({
   selectedSize,
   onSizeChange,
 }) => {
-  const toggleSize = (size: string) => {
-    if (selectedSize.includes(size)) {
-      onSizeChange(selectedSize.filter((s) => s !== size));
-    } else {
-      onSizeChange([...selectedSize, size]);
-    }
-  };
+  const toggleSize = (size: string) =>
+    onSizeChange(toggleItem(selectedSize, size));
   return (
     <SizeSelectBase
       sizes={sizes}

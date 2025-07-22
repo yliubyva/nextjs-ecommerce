@@ -1,6 +1,7 @@
 import clsx from "clsx";
 import Checkmark from "@public/icons/checkmark-white.svg";
 import { ColorName, listColors } from "@/data/colors";
+import { isSelected, toggleItem } from "@/utils/selection-utils";
 
 type ColorSelectBaseProps = {
   colors: ColorName[];
@@ -21,12 +22,8 @@ const ColorSelectBase: React.FC<ColorSelectBaseProps> = ({
     return hex;
   };
 
-  const isSelected = (color: ColorName) => {
-    if (Array.isArray(selectedColors)) {
-      return selectedColors.includes(color);
-    }
-    return selectedColors === color;
-  };
+  const isSelectedColor = (color: ColorName) =>
+    isSelected(selectedColors, color);
 
   return (
     <div className="flex flex-wrap gap-[12px] xl:gap-[16px]">
@@ -42,7 +39,7 @@ const ColorSelectBase: React.FC<ColorSelectBaseProps> = ({
             backgroundColor: `${findHexColor(color)}`,
           }}
         >
-          {isSelected(color) && (
+          {isSelectedColor(color) && (
             <Checkmark
               className={clsx(color === "white" ? "fill-black" : "fill-white")}
             />
@@ -64,13 +61,8 @@ export const MultiColorSelect: React.FC<MultiColorSelectProps> = ({
   selectedColors,
   onColorChange,
 }) => {
-  const toggleColor = (color: ColorName) => {
-    if (selectedColors.includes(color)) {
-      onColorChange(selectedColors.filter((c) => c !== color));
-    } else {
-      onColorChange([...selectedColors, color]);
-    }
-  };
+  const toggleColor = (color: ColorName) =>
+    onColorChange(toggleItem(selectedColors, color));
   return (
     <ColorSelectBase
       colors={colors}
