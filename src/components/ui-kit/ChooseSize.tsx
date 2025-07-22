@@ -1,16 +1,22 @@
 import clsx from "clsx";
 
-type Props = {
+type SizeSelectBaseProps = {
   sizes: string[];
-  selectedSize: string | null;
+  selectedSize: string | string[];
   onSizeChange: (size: string) => void;
 };
 
-export const ChooseSize: React.FC<Props> = ({
+const SizeSelectBase: React.FC<SizeSelectBaseProps> = ({
   sizes,
   selectedSize,
   onSizeChange,
 }) => {
+  const isSelectedSize = (size: string) => {
+    if (Array.isArray(selectedSize)) {
+      return selectedSize.includes(size);
+    }
+    return selectedSize === size;
+  };
   return (
     <div>
       <div className="flex flex-wrap gap-[8px] xl:gap-[16px]">
@@ -18,8 +24,8 @@ export const ChooseSize: React.FC<Props> = ({
           <button
             key={size}
             className={clsx(
-              "w-full max-w-[120px] min-w-[76px] cursor-pointer rounded-full bg-[#F0F0F0] py-[10px] text-sm text-(--color-text-primary) transition duration-250 ease-in-out hover:bg-black hover:font-normal hover:text-white xl:px-[24px] xl:py-[12px] xl:text-base",
-              selectedSize === size && "bg-black font-normal text-white",
+              "cursor-pointer rounded-full bg-[#F0F0F0] px-[20px] py-[10px] text-sm font-light text-(--color-text-primary) transition duration-250 ease-in-out hover:bg-black hover:text-white xl:px-[24px] xl:py-[12px] xl:text-base",
+              isSelectedSize(size) && "bg-black text-white",
             )}
             onClick={() => onSizeChange(size)}
           >
@@ -28,5 +34,52 @@ export const ChooseSize: React.FC<Props> = ({
         ))}
       </div>
     </div>
+  );
+};
+
+type MultiSizeSelectProps = {
+  sizes: string[];
+  selectedSize: string[];
+  onSizeChange: (size: string[]) => void;
+};
+
+export const MultiSizeSelect: React.FC<MultiSizeSelectProps> = ({
+  sizes,
+  selectedSize,
+  onSizeChange,
+}) => {
+  const toggleSize = (size: string) => {
+    if (selectedSize.includes(size)) {
+      onSizeChange(selectedSize.filter((s) => s !== size));
+    } else {
+      onSizeChange([...selectedSize, size]);
+    }
+  };
+  return (
+    <SizeSelectBase
+      sizes={sizes}
+      selectedSize={selectedSize}
+      onSizeChange={toggleSize}
+    />
+  );
+};
+
+type SingleSizeSelectProps = {
+  sizes: string[];
+  selectedSize: string;
+  onSizeChange: (size: string) => void;
+};
+
+export const SingleSizeSelect: React.FC<SingleSizeSelectProps> = ({
+  sizes,
+  selectedSize,
+  onSizeChange,
+}) => {
+  return (
+    <SizeSelectBase
+      sizes={sizes}
+      selectedSize={selectedSize}
+      onSizeChange={(size) => onSizeChange(size)}
+    />
   );
 };
