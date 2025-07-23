@@ -1,10 +1,13 @@
+import { SizeName } from "@/types/sizes";
+import { toggleSizes } from "@/lib/features/filtersSlice";
+import { useAppDispatch, useAppSelector } from "@/lib/hooks";
 import { isSelected, toggleItem } from "@/utils/selection-utils";
 import clsx from "clsx";
 
 type SizeSelectBaseProps = {
-  sizes: string[];
-  selectedSize: string | string[];
-  onSizeChange: (size: string) => void;
+  sizes: SizeName[];
+  selectedSize: SizeName | SizeName[] | null;
+  onSizeChange: (size: SizeName) => void;
 };
 
 const SizeSelectBase: React.FC<SizeSelectBaseProps> = ({
@@ -33,32 +36,25 @@ const SizeSelectBase: React.FC<SizeSelectBaseProps> = ({
   );
 };
 
-type MultiSizeSelectProps = {
-  sizes: string[];
-  selectedSize: string[];
-  onSizeChange: (size: string[]) => void;
-};
-
-export const MultiSizeSelect: React.FC<MultiSizeSelectProps> = ({
-  sizes,
-  selectedSize,
-  onSizeChange,
-}) => {
-  const toggleSize = (size: string) =>
-    onSizeChange(toggleItem(selectedSize, size));
+export const MultiSizeSelect = () => {
+  const uniqueSizes = useAppSelector((state) => state.filters.available.sizes);
+  const selectedSize = useAppSelector(
+    (state) => state.filters.selected.selectedSizes,
+  );
+  const dispatch = useAppDispatch();
   return (
     <SizeSelectBase
-      sizes={sizes}
+      sizes={uniqueSizes}
       selectedSize={selectedSize}
-      onSizeChange={toggleSize}
+      onSizeChange={(size) => dispatch(toggleSizes(size))}
     />
   );
 };
 
 type SingleSizeSelectProps = {
-  sizes: string[];
-  selectedSize: string;
-  onSizeChange: (size: string) => void;
+  sizes: SizeName[];
+  selectedSize: SizeName | null;
+  onSizeChange: (size: SizeName) => void;
 };
 
 export const SingleSizeSelect: React.FC<SingleSizeSelectProps> = ({

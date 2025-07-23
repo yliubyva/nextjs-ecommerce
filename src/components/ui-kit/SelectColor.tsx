@@ -1,11 +1,13 @@
 import clsx from "clsx";
 import Checkmark from "@public/icons/checkmark-white.svg";
-import { ColorName, listColors } from "@/data/colors";
-import { isSelected, toggleItem } from "@/utils/selection-utils";
+import { ColorName, listColors } from "@/types/colors";
+import { isSelected } from "@/utils/selection-utils";
+import { useAppDispatch, useAppSelector } from "@/lib/hooks";
+import { toggleColors } from "@/lib/features/filtersSlice";
 
 type ColorSelectBaseProps = {
   colors: ColorName[];
-  selectedColors: ColorName | ColorName[];
+  selectedColors: ColorName | ColorName[] | null;
   toggleColor: (colors: ColorName) => void;
 };
 
@@ -50,23 +52,19 @@ const ColorSelectBase: React.FC<ColorSelectBaseProps> = ({
   );
 };
 
-type MultiColorSelectProps = {
-  colors: ColorName[];
-  selectedColors: ColorName[];
-  onColorChange: (colors: ColorName[]) => void;
-};
+export const MultiColorSelect = () => {
+  const uniqueColors = useAppSelector(
+    (state) => state.filters.available.colors,
+  );
+  const selectedColors = useAppSelector(
+    (state) => state.filters.selected.selectedColors,
+  );
+  const dispatch = useAppDispatch();
 
-export const MultiColorSelect: React.FC<MultiColorSelectProps> = ({
-  colors,
-  selectedColors,
-  onColorChange,
-}) => {
-  const toggleColor = (color: ColorName) =>
-    onColorChange(toggleItem(selectedColors, color));
   return (
     <ColorSelectBase
-      colors={colors}
-      toggleColor={toggleColor}
+      colors={uniqueColors}
+      toggleColor={(color) => dispatch(toggleColors(color))}
       selectedColors={selectedColors}
     />
   );
@@ -74,7 +72,7 @@ export const MultiColorSelect: React.FC<MultiColorSelectProps> = ({
 
 type SingleColorSelectProps = {
   colors: ColorName[];
-  selectedColor: ColorName;
+  selectedColor: ColorName | null;
   onColorChange: (color: ColorName) => void;
 };
 

@@ -1,35 +1,33 @@
 import { Range } from "react-range";
 import clsx from "clsx";
+import { useAppDispatch, useAppSelector } from "@/lib/hooks";
+import { togglePriceRange } from "@/lib/features/filtersSlice";
 
-type Props = {
-  min: number;
-  max: number;
-  values: number[];
-  onValuesChange: (values: number[]) => void;
-};
+export const PriceRangeSlider = () => {
+  const { min, max } = useAppSelector(
+    (state) => state.filters.available.priceRange,
+  );
+  const selectedRangeValues = useAppSelector(
+    (state) => state.filters.selected.selectedRangeValues,
+  );
+  const dispatch = useAppDispatch();
 
-export const DoubleRange: React.FC<Props> = ({
-  min,
-  max,
-  values,
-  onValuesChange,
-}) => {
   return (
     <div className="w-full px-[10px] pb-[26px]">
       <Range
         step={1}
         min={min}
         max={max}
-        values={values}
-        onChange={onValuesChange}
+        values={selectedRangeValues}
+        onChange={(values) => dispatch(togglePriceRange(values))}
         renderTrack={({ props, children }) => {
           return (
             <div {...props} className="relative h-2 w-full rounded bg-gray-300">
               <div
                 className="absolute h-2 rounded bg-black"
                 style={{
-                  left: `${((values[0] - min) / (max - min)) * 100}%`,
-                  width: `${((values[1] - values[0]) / (max - min)) * 100}%`,
+                  left: `${((selectedRangeValues[0] - min) / (max - min)) * 100}%`,
+                  width: `${((selectedRangeValues[1] - selectedRangeValues[0]) / (max - min)) * 100}%`,
                 }}
               />
               {children}
@@ -48,7 +46,7 @@ export const DoubleRange: React.FC<Props> = ({
               )}
             >
               <div className="mt-[24px] text-sm">
-                ${index === 0 ? values[0] : values[1]}
+                ${index === 0 ? selectedRangeValues[0] : selectedRangeValues[1]}
               </div>
             </div>
           );

@@ -2,6 +2,8 @@ import { Container } from "@/components/ui-kit/Container";
 import { Product } from "@/types/product";
 import { firstLetterToUpperCase } from "@/utils/string";
 import { ShopClient } from "@/components/sections/shop/ShopClient";
+import { extractFilterOptionsFromProducts } from "@/utils/extract-filter-options";
+import StoreProvider from "@/app/StoreProvider";
 
 type Params = {
   params: {
@@ -18,9 +20,13 @@ export default async function ShopPage({ params }: Params) {
     (product) => product.category === firstLetterToUpperCase(category),
   );
 
+  const filtersAvalibaleOptions = extractFilterOptionsFromProducts(products);
+
   return (
     <Container>
-      <ShopClient category={category} products={filteredProducts} />
+      <StoreProvider filterOptions={filtersAvalibaleOptions}>
+        <ShopClient category={category} products={filteredProducts} />
+      </StoreProvider>
     </Container>
   );
 }
