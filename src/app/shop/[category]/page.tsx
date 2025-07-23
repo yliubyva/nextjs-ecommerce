@@ -1,5 +1,7 @@
 import { Container } from "@/components/ui-kit/Container";
 import { Product } from "@/types/product";
+import { firstLetterToUpperCase } from "@/utils/string";
+import { ShopClient } from "@/components/sections/shop/ShopClient";
 
 type Params = {
   params: {
@@ -12,10 +14,13 @@ export default async function ShopPage({ params }: Params) {
   const res = await fetch("http://localhost:3000/api/products/");
   const products: Product[] = await res.json();
 
-  console.log(products);
+  const filteredProducts = products.filter(
+    (product) => product.category === firstLetterToUpperCase(category),
+  );
+
   return (
     <Container>
-      <p>{category}</p>
+      <ShopClient category={category} products={filteredProducts} />
     </Container>
   );
 }
