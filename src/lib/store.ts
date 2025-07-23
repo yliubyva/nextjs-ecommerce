@@ -1,8 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
+import FiltersReducer from "@/lib/features/filtersSlice";
 
 export const makeStore = () => {
   return configureStore({
-    reducer: {},
+    reducer: {
+      filters: FiltersReducer,
+    },
   });
 };
 
