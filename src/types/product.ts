@@ -1,6 +1,8 @@
-import { ColorName } from "@/data/colors";
+import { ColorName } from "@/types/colors";
+import { SizeName } from "@/types/sizes";
+import { TypeClothesName } from "@/types/clothes";
 
-type Color = {
+export type Color = {
   name: ColorName;
   images: string[];
 };
@@ -16,13 +18,13 @@ export type Product = {
   id: string;
   title: string;
   category: "Men" | "Women";
-  type: "T-shirt" | "Shorts" | "Shirts" | "Hoodie" | "Jeans";
+  type: TypeClothesName;
   brand: "Versache" | "Zara" | "Gucci" | "Prade" | "Calvin Klein";
   price: number;
   discount: number | null;
   rating: number;
   colors: Color[];
-  sizes: Array<"Small" | "Medium" | "Large" | "X-Large">;
+  sizes: SizeName[];
   description: string;
   popularity: number;
   reviews?: Review[];

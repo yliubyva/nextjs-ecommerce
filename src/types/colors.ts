@@ -7,6 +7,10 @@ export const listColors = {
   green: "#008000",
   orange: "#ffa500",
   yellow: "#FFFF00",
+  purple: "#800080",
+  brown: "#964B00",
+  "dark-green": "#013220",
+  "dark-purple": "#301934",
 } as const;
 
 export type ColorName = keyof typeof listColors;
