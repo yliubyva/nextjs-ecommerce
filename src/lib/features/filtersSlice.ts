@@ -14,7 +14,7 @@ export interface FilterAvailableOptions {
   };
 }
 
-interface FilterSelectedOptions {
+export interface FilterSelectedOptions {
   selectedColors: ColorName[];
   selectedSizes: SizeName[];
   selectedTypes: TypeClothesName[];
@@ -80,6 +80,17 @@ const FiltersSlice = createSlice({
     togglePriceRange(state, action: PayloadAction<number[]>) {
       state.selected.selectedRangeValues = action.payload;
     },
+    resetFilters(state) {
+      state.selected = {
+        selectedColors: [],
+        selectedSizes: [],
+        selectedTypes: [],
+        selectedRangeValues: [
+          state.available.priceRange.min,
+          state.available.priceRange.max,
+        ],
+      };
+    },
   },
 });
 
@@ -89,6 +100,7 @@ export const {
   toggleSizes,
   toggleTypes,
   togglePriceRange,
+  resetFilters,
 } = FiltersSlice.actions;
 
 export default FiltersSlice.reducer;
