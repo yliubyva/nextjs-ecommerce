@@ -3,22 +3,25 @@ import { useState } from "react";
 import { useWindowWidth } from "@/hooks/useWindowWidth";
 import { Filters } from "@/components/ui-kit/Filters";
 import { ProductCard } from "@/components/ui-kit/ProductCard";
-import { Product } from "@/types/product";
 import { firstLetterToUpperCase } from "@/utils/string";
 import FilterIcon from "@public/icons/icon-filters.svg";
+import { useAppSelector } from "@/lib/hooks";
+import { filterByCategory } from "@/utils/product-filters";
 
 type Props = {
   category: string;
-  products: Product[];
 };
 
-export const ShopClient: React.FC<Props> = ({ products, category }) => {
+export const ShopClient: React.FC<Props> = ({ category }) => {
   const width = useWindowWidth();
   const isMobile = width !== null && 768 > width;
 
   const [isOpenFilters, setIsOpenFilters] = useState(() => {
     return !isMobile;
   });
+
+  const products = useAppSelector((state) => state.products.filtered);
+  const filteredProductsByCategory = filterByCategory(products, category);
 
   return (
     <>
@@ -43,7 +46,7 @@ export const ShopClient: React.FC<Props> = ({ products, category }) => {
             </button>
           </div>
           <div className="xl:grid-rows-[300px, 300px] grid h-fit grid-cols-[repeat(auto-fit,_minmax(180px,_1fr))] gap-x-[14px] gap-y-[24px] xl:grid-cols-3">
-            {products.map((product) => {
+            {filteredProductsByCategory.map((product) => {
               return (
                 <div
                   key={product.id}
