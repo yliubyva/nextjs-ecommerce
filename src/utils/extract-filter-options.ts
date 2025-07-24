@@ -1,4 +1,5 @@
 import { Product } from "@/types/product";
+import { filterByCategory } from "./product-filters";
 
 function getUniqueOptions(products: Product[]) {
   const types = [...new Set(products.map((p) => p.type))];
@@ -21,9 +22,13 @@ function getPriceRange(products: Product[]) {
   return { min, max };
 }
 
-export function extractFilterOptionsFromProducts(products: Product[]) {
-  const priceRange = getPriceRange(products);
-  const options = getUniqueOptions(products);
+export function extractFilterOptionsFromProducts(
+  products: Product[],
+  category: string,
+) {
+  const filteredProductsByCategory = filterByCategory(products, category);
+  const priceRange = getPriceRange(filteredProductsByCategory);
+  const options = getUniqueOptions(filteredProductsByCategory);
 
   return {
     ...options,
