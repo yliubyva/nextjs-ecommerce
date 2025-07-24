@@ -8,6 +8,9 @@ import { Button } from "./Button";
 import { FilterDropdown } from "./FilterDropdown";
 import Filter from "@public/icons/icon-filters.svg";
 import CloseIcon from "@public/icons/icon-close.svg";
+import { useAppDispatch, useAppSelector } from "@/lib/hooks";
+import { applyFilters } from "@/lib/features/productsSlice";
+import { resetFilters } from "@/lib/features/filtersSlice";
 
 type FiltersProps = {
   isOpen: boolean;
@@ -59,6 +62,8 @@ export const Filters: React.FC<FiltersProps> = ({
 };
 
 const FiltersBody = () => {
+  const selectedOptions = useAppSelector((store) => store.filters.selected);
+  const dispatch = useAppDispatch();
   return (
     <>
       <Divider />
@@ -79,10 +84,20 @@ const FiltersBody = () => {
       </FilterDropdown>
       <Button
         variant="primary"
-        onClick={() => console.log("click")}
+        onClick={() => dispatch(applyFilters(selectedOptions))}
         label="Apply Filter"
-        addStyle="my-[20px]"
+        addStyle="my-[20px] w-full max-w-[768px] xl:max-w-[295px]"
       />
+      {(selectedOptions.selectedColors.length >= 1 ||
+        selectedOptions.selectedTypes.length >= 1 ||
+        selectedOptions.selectedSizes.length >= 1) && (
+        <button
+          onClick={() => dispatch(resetFilters())}
+          className="w-full cursor-pointer"
+        >
+          <span className="hover:border-b">Reset Filters</span>
+        </button>
+      )}
     </>
   );
 };
