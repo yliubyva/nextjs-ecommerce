@@ -10,7 +10,7 @@ import Filter from "@public/icons/icon-filters.svg";
 import CloseIcon from "@public/icons/icon-close.svg";
 import { useAppDispatch, useAppSelector } from "@/lib/hooks";
 import { applyFilters } from "@/lib/features/productsSlice";
-import { resetFilters } from "@/lib/features/filtersSlice";
+import { resetAndApplyFilters } from "@/lib/features/filtersThunks";
 
 type FiltersProps = {
   isOpen: boolean;
@@ -92,7 +92,7 @@ const FiltersBody = () => {
         selectedOptions.selectedTypes.length >= 1 ||
         selectedOptions.selectedSizes.length >= 1) && (
         <button
-          onClick={() => dispatch(resetFilters())}
+          onClick={() => dispatch(resetAndApplyFilters())}
           className="w-full cursor-pointer"
         >
           <span className="hover:border-b">Reset Filters</span>
