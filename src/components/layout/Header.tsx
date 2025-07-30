@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import clsx from "clsx";
@@ -10,6 +10,8 @@ import Search from "@public/icons/icon-search.svg";
 import Cart from "@public/icons/icon-cart.svg";
 import Account from "@public/icons/icon-account.svg";
 import Arrow from "@public/icons/arrow-bottom.svg";
+import { usePathname } from "next/navigation";
+import { useWindowWidth } from "@/hooks/useWindowWidth";
 
 export const Header = () => {
   const [openState, setOpenState] = useState({
@@ -17,12 +19,40 @@ export const Header = () => {
     shop: false,
   });
 
+  const menuRef = useRef<HTMLUListElement>(null);
+  const pathname = usePathname();
+  const width = useWindowWidth();
+  const isMobile = width !== null && 768 > width;
+
   function toggleSection(section: "menu" | "shop") {
     setOpenState((prev) => ({
       ...prev,
       [section]: !prev[section],
     }));
   }
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        openState.menu &&
+        isMobile &&
+        menuRef.current &&
+        !menuRef.current.contains(event.target as Node)
+      ) {
+        setOpenState((prev) => ({ ...prev, menu: false }));
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, [openState.menu, isMobile]);
+
+  useEffect(() => {
+    if (openState.menu) {
+      setOpenState((prev) => ({ ...prev, menu: false }));
+    }
+  }, [pathname]);
+
   return (
     <Container>
       <div className="flex items-center justify-between py-5 xl:pt-[24px] xl:pb-[24px]">
@@ -58,12 +88,17 @@ export const Header = () => {
             )}
           ></div>
           <ul
+            ref={menuRef}
             className={clsx(
               "absolute top-[64px] left-0 z-50 flex h-screen w-[80%] flex-col gap-[50px] bg-black pt-[30px] pb-[30px] pl-[20px] text-white transition-transform duration-300 ease-in-out md:static md:h-full md:w-full md:translate-x-0 md:flex-row md:items-center md:gap-[24px] md:bg-transparent md:p-0 md:text-black",
               openState.menu ? "translate-x-0" : "-translate-x-full",
             )}
           >
-            <li>
+            <li
+              onMouseEnter={() =>
+                setOpenState((prev) => ({ ...prev, shop: true }))
+              }
+            >
               <button
                 className="flex cursor-pointer items-center gap-[5px]"
                 onClick={() => toggleSection("shop")}
@@ -84,6 +119,9 @@ export const Header = () => {
                     ? "h-full translate-y-0 opacity-100"
                     : "relative -z-1 hidden h-0 -translate-y-[30px] opacity-0",
                 )}
+                onMouseLeave={() =>
+                  setOpenState((prev) => ({ ...prev, shop: false }))
+                }
               >
                 <Link href="/shop/men" className="text-sm hover:opacity-50">
                   Men
