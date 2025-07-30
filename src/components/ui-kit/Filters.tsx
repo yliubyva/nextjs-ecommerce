@@ -88,16 +88,12 @@ const FiltersBody = () => {
         label="Apply Filter"
         addStyle="my-[20px] w-full max-w-[768px] xl:max-w-[295px]"
       />
-      {(selectedOptions.selectedColors.length >= 1 ||
-        selectedOptions.selectedTypes.length >= 1 ||
-        selectedOptions.selectedSizes.length >= 1) && (
-        <button
-          onClick={() => dispatch(resetAndApplyFilters())}
-          className="w-full cursor-pointer"
-        >
-          <span className="hover:border-b">Reset Filters</span>
-        </button>
-      )}
+      <button
+        onClick={() => dispatch(resetAndApplyFilters())}
+        className="w-full cursor-pointer"
+      >
+        <span className="hover:border-b">Reset Filters</span>
+      </button>
     </>
   );
 };
