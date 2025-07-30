@@ -18,7 +18,7 @@ export const Price: React.FC<Props> = ({ price, discount }) => {
           </p>
         </div>
       ) : (
-        <p className="text-xl font-normal xl:text-2xl">${formatPrice(price)}</p>
+        <p className="text-xl font-normal xl:text-2xl">{formatPrice(price)}</p>
       )}
     </>
   );
