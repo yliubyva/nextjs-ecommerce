@@ -1,12 +1,14 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useWindowWidth } from "@/hooks/useWindowWidth";
 import { Filters } from "@/components/ui-kit/Filters";
 import { ProductCard } from "@/components/ui-kit/ProductCard";
 import { firstLetterToUpperCase } from "@/utils/string";
 import FilterIcon from "@public/icons/icon-filters.svg";
-import { useAppSelector } from "@/lib/hooks";
-import { filterByCategory } from "@/utils/product-filters";
+import { useAppDispatch, useAppSelector } from "@/lib/hooks";
+import { Divider } from "@/components/ui-kit/Divider";
+import { Pagination } from "@/components/ui-kit/Pagination";
+import { setCurrentPage, setItemsPerPage } from "@/lib/features/productsSlice";
 
 type Props = {
   category: string;
@@ -20,9 +22,24 @@ export const ShopClient: React.FC<Props> = ({ category }) => {
     return !isMobile;
   });
 
-  const products = useAppSelector((state) => state.products.filtered);
-  const filteredProductsByCategory = filterByCategory(products, category);
+  const dispatch = useAppDispatch();
+  useEffect(() => {
+    if (width === null) return;
+    const itemsPerPage = width < 768 ? 6 : 9;
 
+    dispatch(setItemsPerPage(itemsPerPage));
+    dispatch(setCurrentPage(1));
+  }, [width, dispatch]);
+
+  const { filtered, pagination } = useAppSelector((state) => state.products);
+  const { currentPage, itemsPerPage } = pagination;
+
+  const indexOfLastProduct = currentPage * itemsPerPage;
+  const indexOfFirstProduct = indexOfLastProduct - itemsPerPage;
+  const currentProducts = filtered.slice(
+    indexOfFirstProduct,
+    indexOfLastProduct,
+  );
   return (
     <>
       <div className="md:flex md:gap-[20px]">
@@ -46,25 +63,33 @@ export const ShopClient: React.FC<Props> = ({ category }) => {
             </button>
           </div>
           <div className="xl:grid-rows-[300px, 300px] grid h-fit grid-cols-[repeat(auto-fit,_minmax(180px,_1fr))] gap-x-[14px] gap-y-[24px] xl:grid-cols-3">
-            {filteredProductsByCategory.map((product) => {
-              return (
-                <div
-                  key={product.id}
-                  className="h-fit xl:h-[425px] xl:w-[295px]"
-                >
-                  <ProductCard
-                    id={product.id}
-                    category={product.category.toLowerCase()}
-                    productName={product.title}
-                    image={product.colors[0].images[0]}
-                    rating={product.rating}
-                    price={product.price}
-                    discount={product.discount}
-                    isHeroPage={false}
-                  />
-                </div>
-              );
-            })}
+            {currentProducts.length === 0 ? (
+              <p>No products found</p>
+            ) : (
+              currentProducts.map((product) => {
+                return (
+                  <div
+                    key={product.id}
+                    className="h-fit xl:h-[425px] xl:w-[295px]"
+                  >
+                    <ProductCard
+                      id={product.id}
+                      category={product.category.toLowerCase()}
+                      productName={product.title}
+                      image={product.colors[0].images[0]}
+                      rating={product.rating}
+                      price={product.price}
+                      discount={product.discount}
+                      isHeroPage={false}
+                    />
+                  </div>
+                );
+              })
+            )}
+          </div>
+          <div>
+            <Divider addClass="mb-[20px]" />
+            <Pagination />
           </div>
         </div>
       </div>

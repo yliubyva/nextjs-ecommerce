@@ -1,23 +1,26 @@
+import { useAppDispatch, useAppSelector } from "@/lib/hooks";
 import { PaginationArrowButton, PaginationButton } from "./Button";
+import {
+  goToNextPage,
+  setCurrentPage,
+  goToPrevPage,
+} from "@/lib/features/productsSlice";
+import { useMemo } from "react";
 
-type Props = {
-  currentPage: number;
-  productPerPage: number;
-  length: number;
-  handlePagination: (param: number) => void;
-  handlePrevPage: () => void;
-  handleNextPage: () => void;
-};
+export const Pagination = () => {
+  const dispatch = useAppDispatch();
+  const length = useAppSelector((state) => state.products.filtered.length);
+  const productsPerPage = useAppSelector(
+    (state) => state.products.pagination.itemsPerPage,
+  );
+  const currentPage = useAppSelector(
+    (state) => state.products.pagination.currentPage,
+  );
 
-export const Pagination: React.FC<Props> = ({
-  currentPage,
-  productPerPage,
-  length,
-  handlePagination,
-  handlePrevPage,
-  handleNextPage,
-}) => {
-  const totalPages = Math.ceil(length / productPerPage);
+  const totalPages = useMemo(
+    () => Math.ceil(length / productsPerPage),
+    [length, productsPerPage],
+  );
   const pageNumbers = Array.from({ length: totalPages }, (_, index) => {
     return index + 1;
   });
@@ -26,14 +29,15 @@ export const Pagination: React.FC<Props> = ({
       <PaginationArrowButton
         label="Previous"
         isNext={false}
-        onClick={() => handlePrevPage()}
+        onClick={() => dispatch(goToPrevPage())}
+        disabled={currentPage === 1}
       />
       <div className="flex gap-[10px]">
         {pageNumbers.map((pageNumber) => (
           <PaginationButton
             key={pageNumber}
             isActive={pageNumber === currentPage}
-            onClick={() => handlePagination(pageNumber)}
+            onClick={() => dispatch(setCurrentPage(pageNumber))}
             label={pageNumber}
           ></PaginationButton>
         ))}
@@ -41,7 +45,7 @@ export const Pagination: React.FC<Props> = ({
       <PaginationArrowButton
         label="Next"
         isNext
-        onClick={() => handleNextPage()}
+        onClick={() => dispatch(goToNextPage())}
         disabled={currentPage === totalPages}
       />
     </div>
