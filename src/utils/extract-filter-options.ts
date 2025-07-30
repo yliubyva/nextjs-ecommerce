@@ -1,5 +1,4 @@
 import { Product } from "@/types/product";
-import { filterByCategory } from "./product-filters";
 import { calculateDiscountedPrice } from "./price";
 
 function getUniqueOptions(products: Product[]) {
@@ -26,13 +25,9 @@ function getPriceRange(products: Product[]) {
   return { min: Math.min(...prices), max: Math.max(...prices) };
 }
 
-export function extractFilterOptionsFromProducts(
-  products: Product[],
-  category: string,
-) {
-  const filteredProductsByCategory = filterByCategory(products, category);
-  const priceRange = getPriceRange(filteredProductsByCategory);
-  const options = getUniqueOptions(filteredProductsByCategory);
+export function extractFilterOptionsFromProducts(products: Product[]) {
+  const priceRange = getPriceRange(products);
+  const options = getUniqueOptions(products);
 
   return {
     ...options,

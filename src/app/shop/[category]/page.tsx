@@ -3,6 +3,7 @@ import { Product } from "@/types/product";
 import { ShopClient } from "@/components/sections/shop/ShopClient";
 import { extractFilterOptionsFromProducts } from "@/utils/extract-filter-options";
 import StoreProvider from "@/app/StoreProvider";
+import { filterByCategory } from "@/utils/product-filters";
 
 type Params = {
   params: {
@@ -15,15 +16,16 @@ export default async function ShopPage({ params }: Params) {
   const res = await fetch("http://localhost:3000/api/products/");
   const products: Product[] = await res.json();
 
+  const filteredProductsByCategory = filterByCategory(products, category);
+
   const filtersAvalibaleOptions = extractFilterOptionsFromProducts(
-    products,
-    category,
+    filteredProductsByCategory,
   );
 
   return (
     <Container>
       <StoreProvider
-        products={products}
+        products={filteredProductsByCategory}
         filterOptions={filtersAvalibaleOptions}
       >
         <ShopClient category={category} />
