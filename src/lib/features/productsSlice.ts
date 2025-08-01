@@ -3,6 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 import { FilterSelectedOptions } from "./filtersSlice";
 import { applyFilter } from "@/utils/product-filters";
+import { doSort, SortType } from "@/utils/product-sorts";
 
 interface ProductState {
   all: Product[];
@@ -11,6 +12,7 @@ interface ProductState {
     currentPage: number;
     itemsPerPage: number;
   };
+  sortOption: SortType;
 }
 
 const initialState: ProductState = {
@@ -18,8 +20,9 @@ const initialState: ProductState = {
   filtered: [],
   pagination: {
     currentPage: 1,
-    itemsPerPage: 4,
+    itemsPerPage: 6,
   },
+  sortOption: "none",
 };
 
 export const productsSlice = createSlice({
@@ -32,6 +35,9 @@ export const productsSlice = createSlice({
     },
     applyFilters(state, action: PayloadAction<FilterSelectedOptions>) {
       state.filtered = applyFilter(state.all, action.payload);
+      if (state.sortOption) {
+        state.filtered = doSort(state.filtered, state.sortOption);
+      }
       state.pagination.currentPage = 1;
     },
     setItemsPerPage(state, action: PayloadAction<number>) {
@@ -53,6 +59,11 @@ export const productsSlice = createSlice({
         state.pagination.currentPage = state.pagination.currentPage + 1;
       }
     },
+    sortProducts(state, action: PayloadAction<SortType>) {
+      state.sortOption = action.payload;
+      state.filtered = doSort(state.filtered, action.payload);
+      state.pagination.currentPage = 1;
+    },
   },
 });
 
@@ -63,5 +74,6 @@ export const {
   setCurrentPage,
   goToPrevPage,
   goToNextPage,
+  sortProducts,
 } = productsSlice.actions;
 export default productsSlice.reducer;
