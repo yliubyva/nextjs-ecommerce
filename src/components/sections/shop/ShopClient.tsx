@@ -1,14 +1,19 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useWindowWidth } from "@/hooks/useWindowWidth";
 import { Filters } from "@/components/ui-kit/Filters";
-import { ProductCard } from "@/components/ui-kit/ProductCard";
 import { firstLetterToUpperCase } from "@/utils/string";
 import FilterIcon from "@public/icons/icon-filters.svg";
 import { useAppDispatch, useAppSelector } from "@/lib/hooks";
 import { Divider } from "@/components/ui-kit/Divider";
 import { Pagination } from "@/components/ui-kit/Pagination";
-import { setCurrentPage, setItemsPerPage } from "@/lib/features/productsSlice";
+import {
+  setCurrentPage,
+  setItemsPerPage,
+  sortProducts,
+} from "@/lib/features/productsSlice";
+import { SortType } from "@/utils/product-sorts";
+import { ProductsGrid } from "@/components/ui-kit/ProductsGrid";
 
 type Props = {
   category: string;
@@ -22,24 +27,38 @@ export const ShopClient: React.FC<Props> = ({ category }) => {
     return !isMobile;
   });
 
+  const { filtered, pagination } = useAppSelector(
+    (state) => state.products,
+  );
+  const { currentPage, itemsPerPage } = pagination;
   const dispatch = useAppDispatch();
+
   useEffect(() => {
     if (width === null) return;
-    const itemsPerPage = width < 768 ? 6 : 9;
+    const newItemsPerPage = width < 768 ? 6 : 9;
 
-    dispatch(setItemsPerPage(itemsPerPage));
-    dispatch(setCurrentPage(1));
+    dispatch(setItemsPerPage(newItemsPerPage));
   }, [width, dispatch]);
 
-  const { filtered, pagination } = useAppSelector((state) => state.products);
-  const { currentPage, itemsPerPage } = pagination;
+  useEffect(() => {
+    dispatch(setCurrentPage(1));
+  }, [itemsPerPage]);
 
-  const indexOfLastProduct = currentPage * itemsPerPage;
-  const indexOfFirstProduct = indexOfLastProduct - itemsPerPage;
-  const currentProducts = filtered.slice(
-    indexOfFirstProduct,
-    indexOfLastProduct,
-  );
+  const { currentProducts, indexOfFirstProduct, indexOfLastProduct } =
+    useMemo(() => {
+      const indexOfLast = currentPage * itemsPerPage;
+      const indexOfFirst = indexOfLast - itemsPerPage;
+      const products = filtered.slice(indexOfFirst, indexOfLast);
+
+      return {
+        currentProducts: products,
+        indexOfFirstProduct: indexOfFirst,
+        indexOfLastProduct: indexOfLast,
+      };
+    }, [filtered, currentPage, itemsPerPage]);
+
+  const showingStart = indexOfFirstProduct + 1;
+  const showingEnd = Math.min(indexOfLastProduct, filtered.length);
   return (
     <>
       <div className="md:flex md:gap-[20px]">
@@ -52,9 +71,33 @@ export const ShopClient: React.FC<Props> = ({ category }) => {
         </div>
         <div className="grid w-full grid-cols-1 grid-rows-[32px_1fr_57px] gap-[25px] md:grid-rows-[44px_1fr_60px]">
           <div className="flex items-center justify-between">
-            <h1 className="text-2xl font-normal">
-              {firstLetterToUpperCase(category)}
-            </h1>
+            <div className="flex gap-[8px] items-end md:items-center md:w-full md:justify-between">
+              <h1 className="text-2xl font-normal">
+                {firstLetterToUpperCase(category)}
+              </h1>
+              <div className="flex gap-[12px]">
+                <p className="text-(--color-text-primary)">
+                  Showing {showingStart}-{showingEnd} of {filtered.length}{" "}
+                  Products
+                </p>
+                <label className="hidden text-(--color-text-primary) md:block">
+                  Sort by:
+                  <select
+                    name="sort"
+                    onChange={(event) =>
+                      dispatch(sortProducts(event.target.value as SortType))
+                    }
+                    className="cursor-pointer font-normal text-black"
+                  >
+                    <option value="">Choose an option</option>
+                    <option value="price-desc">Price: High to Low</option>
+                    <option value="price-asc">Price: Low to High</option>
+                    <option value="rating-desc">Most Popular</option>
+                    <option value="newest">Newest</option>
+                  </select>
+                </label>
+              </div>
+            </div>
             <button
               className="cursor-pointer rounded-full bg-(--color-category-background) p-[8px] md:hidden"
               onClick={() => setIsOpenFilters(true)}
@@ -62,31 +105,7 @@ export const ShopClient: React.FC<Props> = ({ category }) => {
               <FilterIcon className="h-[16px] w-[16px]" />
             </button>
           </div>
-          <div className="xl:grid-rows-[300px, 300px] grid h-fit grid-cols-[repeat(auto-fit,_minmax(180px,_1fr))] gap-x-[14px] gap-y-[24px] xl:grid-cols-3">
-            {currentProducts.length === 0 ? (
-              <p>No products found</p>
-            ) : (
-              currentProducts.map((product) => {
-                return (
-                  <div
-                    key={product.id}
-                    className="h-fit xl:h-[425px] xl:w-[295px]"
-                  >
-                    <ProductCard
-                      id={product.id}
-                      category={product.category.toLowerCase()}
-                      productName={product.title}
-                      image={product.colors[0].images[0]}
-                      rating={product.rating}
-                      price={product.price}
-                      discount={product.discount}
-                      isHeroPage={false}
-                    />
-                  </div>
-                );
-              })
-            )}
-          </div>
+          <ProductsGrid products={currentProducts} />
           <div>
             <Divider addClass="mb-[20px]" />
             <Pagination />
