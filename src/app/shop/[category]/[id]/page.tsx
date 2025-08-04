@@ -1,3 +1,4 @@
+import { ProductDetailClient } from "@/components/sections/product-detail/ProductDetailClient";
 import { Container } from "@/components/ui-kit/Container";
 import { Product } from "@/types/product";
 import { notFound } from "next/navigation";
@@ -22,7 +23,7 @@ export default async function ProductDetailPage({ params }: Params) {
 
   return (
     <Container>
-      <p>{id}</p>
+      <ProductDetailClient product={product} />
     </Container>
   );
 }
