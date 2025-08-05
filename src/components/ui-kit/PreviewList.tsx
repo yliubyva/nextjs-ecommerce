@@ -4,15 +4,32 @@ import { useWindowWidth } from "@/hooks/useWindowWidth";
 import { ProductsCarousel } from "@/components/EmblaCarousel/ProductsCarousel";
 import { Button } from "@/components/ui-kit/Button";
 import { ProductCard } from "@/components/ui-kit/ProductCard";
+import { useAppDispatch } from "@/lib/hooks";
+import { sortProducts } from "@/lib/features/productsSlice";
+import { SortType } from "@/utils/product-sorts";
+import { useRouter } from "next/navigation";
 
 type Props = {
   title: string;
   productList: Product[];
+  sortType: SortType;
 };
 
-export const PreviewList: React.FC<Props> = ({ title, productList }) => {
+export const PreviewList: React.FC<Props> = ({
+  title,
+  productList,
+  sortType,
+}) => {
   const width = useWindowWidth();
   const isMobile = width < 1240;
+
+  const router = useRouter();
+  const dispatch = useAppDispatch();
+
+  const handleClick = () => {
+    dispatch(sortProducts(sortType));
+    router.push("/shop");
+  };
 
   const renderProductList = () => {
     if (isMobile) {
@@ -53,7 +70,7 @@ export const PreviewList: React.FC<Props> = ({ title, productList }) => {
       <div className="mb-[24px] flex w-full gap-[16px] self-start overflow-hidden sm:self-center xl:mb-[44px] xl:h-[415px]">
         {renderProductList()}
       </div>
-      <Button variant="secondary" label="View All" href="/shop" />
+      <Button variant="secondary" label="View All" onClick={handleClick} />
     </div>
   );
 };

@@ -3,6 +3,7 @@ import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { Breadcrumbs } from "@/components/ui-kit/Breadcrumbs";
 import "./globals.css";
+import StoreProvider from "./StoreProvider";
 
 export const metadata: Metadata = {
   title: "Shop – Trendy Fashion Store",
@@ -18,16 +19,18 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="font-lexend flex h-screen flex-col font-extralight">
-        <header className="fixed right-0 left-0 z-100 bg-white">
-          <Header />
-        </header>
-        <div className="mt-[64px] mb-[184px] flex-[1] xl:mt-[96px]">
-          <Breadcrumbs />
-          {children}
-        </div>
-        <footer className="bg-(--color-category-background)">
-          <Footer />
-        </footer>
+        <StoreProvider>
+          <header className="fixed right-0 left-0 z-100 bg-white">
+            <Header />
+          </header>
+          <div className="mt-[64px] mb-[184px] flex-[1] xl:mt-[96px]">
+            <Breadcrumbs />
+            {children}
+          </div>
+          <footer className="bg-(--color-category-background)">
+            <Footer />
+          </footer>
+        </StoreProvider>
       </body>
     </html>
   );
