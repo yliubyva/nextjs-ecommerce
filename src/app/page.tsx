@@ -5,16 +5,19 @@ import { BrowseByDressStyle } from "@/components/sections/home/BrowseByDressStyl
 import { OurHappyCustomers } from "@/components/sections/home/OurHappyCustomers";
 import { Container } from "@/components/ui-kit/Container";
 import { Divider } from "@/components/ui-kit/Divider";
+import { Product } from "@/types/product";
 
-export default function Home() {
+export default async function Home() {
+  const res = await fetch("http://localhost:3000/api/products/");
+  const products: Product[] = await res.json();
   return (
     <main>
       <Hero />
-      <NewArrivals />
+      <NewArrivals products={products} />
       <Container>
         <Divider addClass="mb-[40px] xl:mb-[64px]" />
       </Container>
-      <TopSelling />
+      <TopSelling products={products} />
       <BrowseByDressStyle />
       <OurHappyCustomers />
     </main>

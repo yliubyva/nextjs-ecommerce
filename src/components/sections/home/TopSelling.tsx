@@ -1,17 +1,21 @@
 import { PreviewList } from "@/components/ui-kit/PreviewList";
 import { Container } from "@/components/ui-kit/Container";
 import { Product } from "@/types/product";
+import { sortByMostPopularity } from "@/utils/product-sorts";
 
-export const TopSelling = async () => {
-  const res = await fetch("http://localhost:3000/api/products/");
-  const products: Product[] = await res.json();
+type Props = {
+  products: Product[];
+};
 
-  const sorted = [...products].sort((a, b) => b.popularity - a.popularity);
-
+export const TopSelling: React.FC<Props> = ({ products }) => {
   return (
     <section className="mb-[50px] xl:mb-[80px]">
       <Container>
-        <PreviewList title="Top Selling" productList={sorted} />
+        <PreviewList
+          title="Top Selling"
+          productList={sortByMostPopularity(products)}
+          sortType="rating-desc"
+        />
       </Container>
     </section>
   );
