@@ -8,7 +8,7 @@ import { useAppDispatch, useAppSelector } from "@/lib/hooks";
 import { Divider } from "@/components/ui-kit/Divider";
 import { Pagination } from "@/components/ui-kit/Pagination";
 import {
-  initializeProducts,
+  initializeFilteredProducts,
   setCurrentPage,
   setItemsPerPage,
   sortProducts,
@@ -21,10 +21,10 @@ import { extractFilterOptionsFromProducts } from "@/utils/extract-filter-options
 
 type Props = {
   category: string;
-  products: Product[];
+  filteredProducts: Product[];
 };
 
-export const ShopClient: React.FC<Props> = ({ category, products }) => {
+export const ShopClient: React.FC<Props> = ({ category, filteredProducts }) => {
   const width = useWindowWidth();
   const isMobile = width !== null && 768 > width;
 
@@ -35,11 +35,12 @@ export const ShopClient: React.FC<Props> = ({ category, products }) => {
   const { filtered, pagination } = useAppSelector((state) => state.products);
   const { currentPage, itemsPerPage } = pagination;
   const dispatch = useAppDispatch();
-  const selectedOption = useAppSelector((store) => store.products.sortOption);
+  const selectedOption = useAppSelector((state) => state.products.sortOption);
 
   useEffect(() => {
-    dispatch(initializeProducts(products));
-    const filtersAvalibaleOptions = extractFilterOptionsFromProducts(products);
+    dispatch(initializeFilteredProducts(filteredProducts));
+    const filtersAvalibaleOptions =
+      extractFilterOptionsFromProducts(filteredProducts);
     dispatch(initializeAvailableOptions(filtersAvalibaleOptions));
 
     if (selectedOption) {

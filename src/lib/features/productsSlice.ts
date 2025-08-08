@@ -7,6 +7,7 @@ import { doSort, SortType } from "@/utils/product-sorts";
 
 interface ProductState {
   all: Product[];
+  filteredByCategory: Product[];
   filtered: Product[];
   pagination: {
     currentPage: number;
@@ -17,6 +18,7 @@ interface ProductState {
 
 const initialState: ProductState = {
   all: [],
+  filteredByCategory: [],
   filtered: [],
   pagination: {
     currentPage: 1,
@@ -29,12 +31,15 @@ export const productsSlice = createSlice({
   name: "products",
   initialState,
   reducers: {
-    initializeProducts(state, action: PayloadAction<Product[]>) {
+    initializeAllProducts(state, action: PayloadAction<Product[]>) {
       state.all = action.payload;
+    },
+    initializeFilteredProducts(state, action: PayloadAction<Product[]>) {
+      state.filteredByCategory = action.payload;
       state.filtered = action.payload;
     },
     applyFilters(state, action: PayloadAction<FilterSelectedOptions>) {
-      state.filtered = applyFilter(state.all, action.payload);
+      state.filtered = applyFilter(state.filteredByCategory, action.payload);
       if (state.sortOption) {
         state.filtered = doSort(state.filtered, state.sortOption);
       }
@@ -68,7 +73,8 @@ export const productsSlice = createSlice({
 });
 
 export const {
-  initializeProducts,
+  initializeAllProducts,
+  initializeFilteredProducts,
   applyFilters,
   setItemsPerPage,
   setCurrentPage,
