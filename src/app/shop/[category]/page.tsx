@@ -1,7 +1,7 @@
 import { Container } from "@/components/ui-kit/Container";
-import { Product } from "@/types/product";
 import { ShopClient } from "@/components/sections/shop/ShopClient";
 import { filterByCategory } from "@/utils/product-filters";
+import { getAllProducts } from "@/lib/api/products";
 
 type Params = {
   params: {
@@ -11,14 +11,16 @@ type Params = {
 
 export default async function ShopPage({ params }: Params) {
   const { category } = await params;
-  const res = await fetch("http://localhost:3000/api/products/");
-  const products: Product[] = await res.json();
+  const allProducts = await getAllProducts();
 
-  const filteredProductsByCategory = filterByCategory(products, category);
+  const filteredProductsByCategory = filterByCategory(allProducts, category);
 
   return (
     <Container>
-      <ShopClient category={category} products={filteredProductsByCategory} />
+      <ShopClient
+        category={category}
+        filteredProducts={filteredProductsByCategory}
+      />
     </Container>
   );
 }

@@ -5,11 +5,11 @@ import { BrowseByDressStyle } from "@/components/sections/home/BrowseByDressStyl
 import { OurHappyCustomers } from "@/components/sections/home/OurHappyCustomers";
 import { Container } from "@/components/ui-kit/Container";
 import { Divider } from "@/components/ui-kit/Divider";
+import { getAllProducts } from "@/lib/api/products";
 import { Product } from "@/types/product";
 
 export default async function Home() {
-  const res = await fetch("http://localhost:3000/api/products/");
-  const products: Product[] = await res.json();
+  const products: Product[] = await getAllProducts();
   return (
     <main>
       <Hero />
