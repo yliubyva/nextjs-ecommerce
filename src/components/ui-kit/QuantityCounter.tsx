@@ -4,23 +4,17 @@ import clsx from "clsx";
 
 type Props = {
   counter: number;
-  onCounterChange: (counter: number) => void;
+  onIncrease: () => void;
+  onDecrease: () => void;
   isCart: boolean;
 };
 
 export const QuantityCounter: React.FC<Props> = ({
   counter,
-  onCounterChange,
+  onIncrease,
+  onDecrease,
   isCart,
 }) => {
-  const handleIncreaseCount = () => {
-    if (counter === 10) return;
-    onCounterChange(counter + 1);
-  };
-  const handlerDecreaseCount = () => {
-    if (counter === 1) return;
-    onCounterChange(counter - 1);
-  };
   return (
     <div
       className={clsx(
@@ -30,19 +24,13 @@ export const QuantityCounter: React.FC<Props> = ({
           : "max-w-[170px] py-[12px] md:py-[14px]",
       )}
     >
-      <button
-        className="h-[20px] w-[20px] cursor-pointer"
-        onClick={handlerDecreaseCount}
-      >
+      <button className="h-[20px] w-[20px] cursor-pointer" onClick={onDecrease}>
         <Minus width={16} />
       </button>
       <p className="justify-self-center text-sm font-normal xl:text-base">
         {counter}
       </p>
-      <button
-        className="h-[20px] w-[20px] cursor-pointer"
-        onClick={handleIncreaseCount}
-      >
+      <button className="h-[20px] w-[20px] cursor-pointer" onClick={onIncrease}>
         <Plus width={16} />
       </button>
     </div>
