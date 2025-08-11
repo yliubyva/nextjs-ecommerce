@@ -1,6 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 import FiltersReducer from "@/lib/features/filtersSlice";
 import ProductsReducer from "@/lib/features/productsSlice";
+import CartReducer from "@/lib/features/cartSlice";
 import { ThunkAction, UnknownAction } from "@reduxjs/toolkit";
 
 export const makeStore = () => {
@@ -8,6 +9,7 @@ export const makeStore = () => {
     reducer: {
       products: ProductsReducer,
       filters: FiltersReducer,
+      cart: CartReducer,
     },
   });
 };
