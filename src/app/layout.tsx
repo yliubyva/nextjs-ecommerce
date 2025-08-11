@@ -23,9 +23,7 @@ export default async function RootLayout({
     <html lang="en">
       <body className="font-lexend flex h-screen flex-col font-extralight">
         <StoreProvider allProducts={allProducts}>
-          <header className="fixed right-0 left-0 z-100 bg-white">
-            <Header />
-          </header>
+          <Header />
           <div className="mt-[64px] mb-[184px] flex-[1] xl:mt-[96px]">
             <Breadcrumbs />
             {children}
