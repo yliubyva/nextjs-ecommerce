@@ -12,6 +12,8 @@ import { Button } from "@/components/ui-kit/Button";
 import { Product } from "@/types/product";
 import { SizeName } from "@/types/sizes";
 import { ColorName } from "@/types/colors";
+import { useAppDispatch } from "@/lib/hooks";
+import { addToCart, CartItemType } from "@/lib/features/cartSlice";
 
 type Props = {
   product: Product;
@@ -27,6 +29,14 @@ export const ProductDetailClient: React.FC<Props> = ({ product }) => {
       setSelectedColor(product.colors[0].name);
     }
   }, [selectedColor, product.colors]);
+
+  useEffect(() => {
+    if (!selectedSize && product.sizes.length > 0) {
+      setSelectedSize(product.sizes[0]);
+    }
+  }, [selectedSize, product.sizes]);
+
+  const dispatch = useAppDispatch();
 
   const width = useWindowWidth();
   const isMobile = width !== null && width < 1024;
@@ -91,15 +101,31 @@ export const ProductDetailClient: React.FC<Props> = ({ product }) => {
             <div className="flex gap-[12px]">
               <QuantityCounter
                 counter={selectedQuantity}
-                onCounterChange={setSelectedQuantity}
+                onIncrease={() => {
+                  if (selectedQuantity < 10)
+                    setSelectedQuantity(selectedQuantity + 1);
+                }}
+                onDecrease={() => {
+                  if (selectedQuantity > 1)
+                    setSelectedQuantity(selectedQuantity - 1);
+                }}
                 isCart={false}
               />
               <Button
-                onClick={() =>
-                  console.log(
-                    `Added: ${product.id} ${selectedColor} ${selectedSize} ${selectedQuantity}`,
-                  )
-                }
+                onClick={() => {
+                  let itemForCart: CartItemType;
+
+                  if (selectedColor && selectedSize) {
+                    itemForCart = {
+                      cartItemId: self.crypto.randomUUID(),
+                      productId: product.id,
+                      color: selectedColor,
+                      size: selectedSize,
+                      quantity: selectedQuantity,
+                    };
+                    dispatch(addToCart(itemForCart));
+                  }
+                }}
                 label="Add to Cart"
                 variant="primary"
                 addStyle="max-w-full"
