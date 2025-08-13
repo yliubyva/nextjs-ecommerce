@@ -1,4 +1,4 @@
-import { Container } from "@/components/ui-kit/Container";
+import { Container } from "@/shared/ui/atoms/Container";
 import Image from "next/image";
 import Link from "next/link";
 

@@ -1,6 +1,6 @@
-import { Container } from "@/components/ui-kit/Container";
-import { CartItems } from "@/components/sections/cart/CartItems";
-import { OrderSummary } from "@/components/sections/cart/OrderSummary";
+import { Container } from "@/shared/ui/atoms/Container";
+import { CartItems } from "@/features/cart/components/CartItems";
+import { OrderSummary } from "@/features/cart/components/OrderSummary";
 
 export default function CartPage() {
   return (

@@ -1,12 +1,12 @@
-import { Hero } from "@/components/sections/home/Hero";
-import { NewArrivals } from "@/components/sections/home/NewArrivals";
-import { TopSelling } from "@/components/sections/home/TopSelling";
-import { BrowseByDressStyle } from "@/components/sections/home/BrowseByDressStyle";
-import { OurHappyCustomers } from "@/components/sections/home/OurHappyCustomers";
-import { Container } from "@/components/ui-kit/Container";
-import { Divider } from "@/components/ui-kit/Divider";
+import { Hero } from "@/features/home/components/Hero";
+import { NewArrivals } from "@/features/home/components/NewArrivals";
+import { TopSelling } from "@/features/home/components/TopSelling";
+import { BrowseByDressStyle } from "@/features/home/components/BrowseByDressStyle";
+import { OurHappyCustomers } from "@/features/home/components/OurHappyCustomers";
+import { Container } from "@/shared/ui/atoms/Container";
+import { Divider } from "@/shared/ui/atoms/Divider";
 import { getAllProducts } from "@/lib/api/products";
-import { Product } from "@/types/product";
+import { Product } from "@/features/products/types/product";
 
 export default async function Home() {
   const products: Product[] = await getAllProducts();

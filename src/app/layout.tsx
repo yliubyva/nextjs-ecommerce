@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
-import { Header } from "@/components/layout/Header";
-import { Footer } from "@/components/layout/Footer";
-import { Breadcrumbs } from "@/components/ui-kit/Breadcrumbs";
+import { Header } from "@/shared/ui/organisms/Header";
+import { Footer } from "@/shared/ui/organisms/Footer";
+import { Breadcrumbs } from "@/shared/ui/molecules/Breadcrumbs";
 import "./globals.css";
 import StoreProvider from "./StoreProvider";
 import { getAllProducts } from "@/lib/api/products";
-import { Product } from "@/types/product";
+import { Product } from "@/features/products/types/product";
 
 export const metadata: Metadata = {
   title: "Shop – Trendy Fashion Store",

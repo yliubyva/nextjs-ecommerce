@@ -1,6 +1,6 @@
-import { Container } from "@/components/ui-kit/Container";
-import { ShopClient } from "@/components/sections/shop/ShopClient";
-import { filterByCategory } from "@/utils/product-filters";
+import { Container } from "@/shared/ui/atoms/Container";
+import { ShopClient } from "@/features/shop/components/ShopClient";
+import { filterByCategory } from "@/features/products/utils/product-filters";
 import { getAllProducts } from "@/lib/api/products";
 
 type Params = {
