@@ -10,7 +10,7 @@ export const SelectOptions: React.FC<Props> = ({
   onChange,
 }) => {
   return (
-    <label className="hidden text-primary md:block">
+    <label className="text-primary hidden md:block">
       Sort by:
       <select
         name="sort"

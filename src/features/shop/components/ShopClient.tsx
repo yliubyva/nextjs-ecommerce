@@ -106,7 +106,7 @@ export const ShopClient: React.FC<Props> = ({ category, filteredProducts }) => {
               </div>
             </div>
             <button
-              className="cursor-pointer rounded-full bg-category-background p-[8px] md:hidden"
+              className="bg-category-background cursor-pointer rounded-full p-[8px] md:hidden"
               onClick={() => setIsOpenFilters(true)}
             >
               <FilterIcon className="h-[16px] w-[16px]" />

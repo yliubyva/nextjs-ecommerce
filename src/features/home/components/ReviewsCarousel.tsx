@@ -80,7 +80,7 @@ export const ReviewsCarousel: React.FC<PropType> = (props) => {
                       height={16}
                     />
                   </div>
-                  <p className="max-w-[336px] min-w-[250px] text-xs text-primary xl:text-base">
+                  <p className="text-primary max-w-[336px] min-w-[250px] text-xs xl:text-base">
                     {review.textReview}
                   </p>
                 </div>

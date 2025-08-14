@@ -13,7 +13,7 @@ export function PaymentsList() {
       {paymentsList.map((payment) => (
         <li
           key={payment.name}
-          className="flex h-[25px] w-[40px] items-center justify-center rounded-[5px] border border-badge bg-white drop-shadow-xs xl:h-[30px] xl:w-[46px]"
+          className="border-badge flex h-[25px] w-[40px] items-center justify-center rounded-[5px] border bg-white drop-shadow-xs xl:h-[30px] xl:w-[46px]"
         >
           <Image
             width={27}

@@ -60,7 +60,7 @@ export function Footer() {
                 className="mb-[14px] h-[30px] w-[144px] xl:mb-[25px] xl:h-[33px] xl:w-[167px]"
               />
             </Link>
-            <p className="mb-[20px] text-sm text-primary xl:mb-[35px]">
+            <p className="text-primary mb-[20px] text-sm xl:mb-[35px]">
               We have clothes that suits your style and which you’re proud to
               wear. From women to men.
             </p>
@@ -73,10 +73,7 @@ export function Footer() {
               </p>
               <ul className="flex flex-col gap-[10px]">
                 {item.list.map((listItem, i) => (
-                  <li
-                    key={i}
-                    className="cursor-pointer text-sm text-primary"
-                  >
+                  <li key={i} className="text-primary cursor-pointer text-sm">
                     {listItem}
                   </li>
                 ))}
@@ -86,7 +83,7 @@ export function Footer() {
         </div>
         <Divider addClass="mb-[16px] xl:mb-[21px]" />
         <div className="flex flex-col items-center justify-between gap-[16px] xl:flex-row">
-          <p className="text-sm text-primary">
+          <p className="text-primary text-sm">
             Shop.co © 2000-2023, All Rights Reserved
           </p>
           <PaymentsList />

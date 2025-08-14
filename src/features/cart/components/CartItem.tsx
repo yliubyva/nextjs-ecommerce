@@ -65,8 +65,7 @@ export const CartItem: React.FC<Props> = ({
               Size: <span className="text-primary">{size}</span>
             </p>
             <p className="text-sm text-black">
-              Color:{" "}
-              <span className="text-primary">{color}</span>
+              Color: <span className="text-primary">{color}</span>
             </p>
           </div>
         </div>

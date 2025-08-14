@@ -13,7 +13,7 @@ export const Price: React.FC<Props> = ({ price, discount }) => {
           <p className="text-sm font-normal text-gray-400 line-through xl:text-2xl">
             {formatPrice(price)}
           </p>
-          <p className="flex h-[20px] w-[42px] items-center justify-center rounded-[60px] bg-discount-background text-xs font-light text-discount-text">
+          <p className="bg-discount-background text-discount-text flex h-[20px] w-[42px] items-center justify-center rounded-[60px] text-xs font-light">
             -{discount}%
           </p>
         </div>
