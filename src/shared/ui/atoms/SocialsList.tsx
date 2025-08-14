@@ -20,7 +20,7 @@ export function SocialsList() {
         <li key={item.name}>
           <a
             href={item.src}
-            className="flex h-[28px] w-[28px] items-center justify-center rounded-full border border-(--color-border-container) bg-white transition-all delay-100 ease-in hover:bg-(--color-black) hover:fill-white"
+            className="flex h-[28px] w-[28px] items-center justify-center rounded-full border border-secondary bg-white transition-all delay-100 ease-in hover:bg-black hover:fill-white"
           >
             {item.component}
           </a>

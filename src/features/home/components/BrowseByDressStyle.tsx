@@ -12,7 +12,7 @@ export const BrowseByDressStyle: React.FC = () => {
   return (
     <section className="mb-[50px] xl:mb-[80px]">
       <Container>
-        <div className="w-full rounded-[20px] bg-(--color-category-background) px-[24px] pt-[40px] pb-[27px] xl:rounded-[40px] xl:px-[64px] xl:pt-[70px] xl:pb-[76px]">
+        <div className="w-full rounded-[20px] bg-category-background px-[24px] pt-[40px] pb-[27px] xl:rounded-[40px] xl:px-[64px] xl:pt-[70px] xl:pb-[76px]">
           <h2 className="font-hubot mx-auto mb-[28px] max-w-[250px] text-center text-3xl font-black uppercase sm:max-w-full xl:mb-[64px] xl:text-5xl">
             Browse by dress style
           </h2>

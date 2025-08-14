@@ -26,7 +26,7 @@ export const FilterDropdown: React.FC<Props> = ({ title, children }) => {
             isOpen && "rotate-180",
           )}
         >
-          <Arrow className="h-[16px] w-[16px] rotate-90 fill-(--color-text-primary)" />
+          <Arrow className="h-[16px] w-[16px] rotate-90 fill-primary" />
         </button>
       </div>
       <div

@@ -28,7 +28,7 @@ export default async function RootLayout({
             <Breadcrumbs />
             {children}
           </div>
-          <footer className="bg-(--color-category-background)">
+          <footer className="bg-category-background">
             <Footer />
           </footer>
         </StoreProvider>

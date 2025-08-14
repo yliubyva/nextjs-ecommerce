@@ -11,7 +11,7 @@ export const UserActions = () => {
 
   return (
     <div className="flex items-center gap-[12px] xl:gap-[40px]">
-      <div className="h-[24px] bg-white xl:flex xl:h-[48px] xl:w-[577px] xl:items-center xl:justify-evenly xl:rounded-[62px] xl:bg-(--color-category-background) xl:px-[8px] xl:py-[6px] xl:text-stone-300">
+      <div className="h-[24px] bg-white xl:flex xl:h-[48px] xl:w-[577px] xl:items-center xl:justify-evenly xl:rounded-[62px] xl:bg-category-background xl:px-[8px] xl:py-[6px] xl:text-stone-300">
         <button className="cursor-pointer">
           <Search
             width={24}

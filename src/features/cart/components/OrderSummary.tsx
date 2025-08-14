@@ -10,13 +10,13 @@ export const OrderSummary = () => {
   const deliveryFee = subtotalPrice ? 15 : 0;
   const totalPrice = subtotalPrice + deliveryFee;
   return (
-    <div className="max-h-[400px] w-full max-w-[715px] rounded-[20px] border border-(--color-border-container) p-[20px] md:col-span-5 md:max-w-[505px] md:px-[24px]">
+    <div className="max-h-[400px] w-full max-w-[715px] rounded-[20px] border border-secondary p-[20px] md:col-span-5 md:max-w-[505px] md:px-[24px]">
       <h2 className="mb-[16px] text-xl font-medium md:mb-[24px] md:text-2xl">
         Order Summary
       </h2>
       <div className="mb-[16px] flex flex-col gap-[20px] md:mb-[24px]">
         <div className="flex w-full justify-between">
-          <p className="text-base text-(--color-text-primary) md:text-xl">
+          <p className="text-base text-primary md:text-xl">
             Subtotal
           </p>
           <span className="text-base font-normal md:text-xl md:font-medium">
@@ -24,7 +24,7 @@ export const OrderSummary = () => {
           </span>
         </div>
         <div className="flex w-full justify-between">
-          <p className="text-base text-(--color-text-primary) md:text-xl">
+          <p className="text-base text-primary md:text-xl">
             Delivery Fee
           </p>
           <span className="text-base font-normal md:text-xl md:font-medium">

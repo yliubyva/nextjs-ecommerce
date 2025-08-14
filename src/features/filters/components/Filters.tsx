@@ -34,7 +34,7 @@ export const Filters: React.FC<FiltersProps> = ({
         <div className="absolute top-0 right-0 bottom-0 left-0 bg-black/20 transition-all duration-700 ease-in-out"></div>
         <div
           className={clsx(
-            "absolute top-[60px] bottom-0 left-0 w-full overflow-auto rounded-tl-[20px] rounded-tr-[20px] border border-(--color-border-container) bg-white px-[24px] py-[20px] transition-transform duration-700 ease-in-out",
+            "absolute top-[60px] bottom-0 left-0 w-full overflow-auto rounded-tl-[20px] rounded-tr-[20px] border border-secondary bg-white px-[24px] py-[20px] transition-transform duration-700 ease-in-out",
             isOpen ? "-translate-y-0" : "translate-y-full",
           )}
         >
@@ -51,7 +51,7 @@ export const Filters: React.FC<FiltersProps> = ({
   }
 
   return (
-    <aside className="sticky top-[110px] w-full max-w-[295px] overflow-auto rounded-[20px] border border-(--color-border-container) bg-white px-[24px] py-[20px]">
+    <aside className="sticky top-[110px] w-full max-w-[295px] overflow-auto rounded-[20px] border border-secondary bg-white px-[24px] py-[20px]">
       <div className="mb-[16px] flex items-center justify-between">
         <p className="text-xl font-normal">Filters</p>
         <Filter className="h-[20px] w-[20px] fill-black" />

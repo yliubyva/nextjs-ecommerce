@@ -17,14 +17,14 @@ export const SelectType = () => {
           onClick={() => dispatch(toggleTypes(type))}
           key={index}
           className={clsx(
-            "flex cursor-pointer items-center justify-between rounded-2xl py-[10px] text-base text-(--color-text-primary) transition duration-250 ease-in-out hover:bg-(--color-border-container)",
+            "flex cursor-pointer items-center justify-between rounded-2xl py-[10px] text-base text-primary transition duration-250 ease-in-out hover:bg-secondary",
             isSelected(selectedType, type) && "font-medium text-black",
           )}
         >
           {type}
           <Arrow
             className={clsx(
-              "h-[16px] w-[16px] fill-(--color-text-primary)",
+              "h-[16px] w-[16px] fill-primary",
               isSelected(selectedType, type) && "fill-black",
             )}
           />

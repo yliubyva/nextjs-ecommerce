@@ -67,7 +67,7 @@ export const ReviewsCarousel: React.FC<PropType> = (props) => {
                 className="flex-[0_0_40%] pl-[20px] md:flex-[0_0_0]"
                 key={index}
               >
-                <div className="border-border-container h-full w-full min-w-[312px] rounded-[20px] border p-[24px] xl:min-w-[400px]">
+                <div className="border-secondary h-full w-full min-w-[312px] rounded-[20px] border p-[24px] xl:min-w-[400px]">
                   <Stars rating={review.rating} showNum={false} />
                   <div className="mt-[12px] mb-[8px] flex gap-[4px]">
                     <p className="text-base font-bold xl:text-xl">
@@ -80,7 +80,7 @@ export const ReviewsCarousel: React.FC<PropType> = (props) => {
                       height={16}
                     />
                   </div>
-                  <p className="max-w-[336px] min-w-[250px] text-xs text-(--color-text-primary) xl:text-base">
+                  <p className="max-w-[336px] min-w-[250px] text-xs text-primary xl:text-base">
                     {review.textReview}
                   </p>
                 </div>

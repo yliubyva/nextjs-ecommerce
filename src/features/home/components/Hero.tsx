@@ -12,7 +12,7 @@ export const Hero = () => {
   ];
 
   return (
-    <section className="mb-[50px] bg-(--color-category-background) xl:mb-[72px]">
+    <section className="mb-[50px] bg-category-background xl:mb-[72px]">
       <Container>
         <div className="flex flex-col items-center sm:flex-row sm:justify-between md:justify-evenly xl:justify-between">
           <div className="pt-[40px] md:pb-[20px] xl:pt-[100px] xl:pb-[50px]">
@@ -20,7 +20,7 @@ export const Hero = () => {
               <h1 className="font-hubot w-[315px] text-4xl font-black xl:w-[580px] xl:text-6xl">
                 FIND CLOTHES THAT MATCHES YOUR STYLE
               </h1>
-              <p className="max-w-[358px] text-sm text-(--color-text-primary) xl:max-w-[580px] xl:text-base">
+              <p className="max-w-[358px] text-sm text-primary xl:max-w-[580px] xl:text-base">
                 Browse through our diverse range of meticulously crafted
                 garments, designed to bring out your individuality and cater to
                 your sense of style.
@@ -39,13 +39,13 @@ export const Hero = () => {
                   <span className="text-2xl font-medium xl:text-4xl">
                     {item.value}
                   </span>
-                  <p className="text-xs text-(--color-text-primary) xl:text-base">
+                  <p className="text-xs text-primary xl:text-base">
                     {item.label}
                   </p>
                 </div>
               ))}
-              <div className="col-start-2 col-end-3 row-start-1 h-[52px] w-[1px] justify-self-center bg-(--color-border-container) xl:h-[74px]"></div>
-              <div className="col-start-4 col-end-5 row-start-1 hidden h-[52px] w-[1px] bg-(--color-border-container) md:block xl:h-[74px]"></div>
+              <div className="col-start-2 col-end-3 row-start-1 h-[52px] w-[1px] justify-self-center bg-secondary xl:h-[74px]"></div>
+              <div className="col-start-4 col-end-5 row-start-1 hidden h-[52px] w-[1px] bg-secondary md:block xl:h-[74px]"></div>
             </div>
           </div>
           <div className="relative sm:self-end">

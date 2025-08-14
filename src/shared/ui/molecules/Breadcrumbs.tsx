@@ -18,7 +18,7 @@ export const Breadcrumbs = () => {
         <BreadcrumbItem>
           <BreadcrumbLink href="/">Home</BreadcrumbLink>
           {pathNames.length > 0 && (
-            <Arrow className="h-[14px] w-[14px] fill-(--color-text-primary)" />
+            <Arrow className="h-[14px] w-[14px] fill-primary" />
           )}
         </BreadcrumbItem>
         {pathNames.map((link, index) => {
@@ -32,7 +32,7 @@ export const Breadcrumbs = () => {
                 {formatSegment(link)}
               </BreadcrumbLink>
               {pathNames.length !== index + 1 && (
-                <Arrow className="h-[14px] w-[14px] fill-(--color-text-primary)" />
+                <Arrow className="h-[14px] w-[14px] fill-primary" />
               )}
             </BreadcrumbItem>
           );
@@ -64,7 +64,7 @@ const BreadcrumbLink = ({
       ) : (
         <Link
           href={href}
-          className="text-sm font-light text-(--color-text-primary) md:text-base"
+          className="text-sm font-light text-primary md:text-base"
         >
           {children}
         </Link>

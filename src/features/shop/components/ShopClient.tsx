@@ -93,7 +93,7 @@ export const ShopClient: React.FC<Props> = ({ category, filteredProducts }) => {
                 {firstLetterToUpperCase(category)}
               </h1>
               <div className="flex gap-[12px]">
-                <p className="text-(--color-text-primary)">
+                <p className="text-primary">
                   Showing {showingStart}-{showingEnd} of {filtered.length}{" "}
                   Products
                 </p>
@@ -106,7 +106,7 @@ export const ShopClient: React.FC<Props> = ({ category, filteredProducts }) => {
               </div>
             </div>
             <button
-              className="cursor-pointer rounded-full bg-(--color-category-background) p-[8px] md:hidden"
+              className="cursor-pointer rounded-full bg-category-background p-[8px] md:hidden"
               onClick={() => setIsOpenFilters(true)}
             >
               <FilterIcon className="h-[16px] w-[16px]" />

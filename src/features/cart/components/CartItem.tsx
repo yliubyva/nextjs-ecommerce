@@ -62,11 +62,11 @@ export const CartItem: React.FC<Props> = ({
           </div>
           <div>
             <p className="text-sm text-black">
-              Size: <span className="text-(--color-text-primary)">{size}</span>
+              Size: <span className="text-primary">{size}</span>
             </p>
             <p className="text-sm text-black">
               Color:{" "}
-              <span className="text-(--color-text-primary)">{color}</span>
+              <span className="text-primary">{color}</span>
             </p>
           </div>
         </div>

@@ -15,7 +15,7 @@ export const CartItems = () => {
           Your cart is currently empty.
         </p>
       ) : (
-        <div className="h-full w-full max-w-[715px] rounded-[20px] border border-(--color-border-container) p-[14px] md:px-[24px] md:py-[20px]">
+        <div className="h-full w-full max-w-[715px] rounded-[20px] border border-secondary p-[14px] md:px-[24px] md:py-[20px]">
           {storeCart.map((cartItem, index) => {
             const product: Product | undefined = getProduct(
               cartItem.productId,

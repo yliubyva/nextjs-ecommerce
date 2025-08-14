@@ -23,7 +23,7 @@ const SizeSelectBase: React.FC<SizeSelectBaseProps> = ({
           <button
             key={size}
             className={clsx(
-              "cursor-pointer rounded-full bg-[#F0F0F0] px-[20px] py-[10px] text-sm font-light text-(--color-text-primary) transition duration-250 ease-in-out hover:bg-black hover:text-white xl:px-[24px] xl:py-[12px] xl:text-base",
+              "cursor-pointer rounded-full bg-[#F0F0F0] px-[20px] py-[10px] text-sm font-light text-primary transition duration-250 ease-in-out hover:bg-black hover:text-white xl:px-[24px] xl:py-[12px] xl:text-base",
               isSelectedSize(size) && "bg-black text-white",
             )}
             onClick={() => onSizeChange(size)}

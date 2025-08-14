@@ -51,7 +51,7 @@ export const NewsletterForm = () => {
         </div>
         {error && <div className="text-sm text-red-500">{error}</div>}
       </div>
-      <button className="flex h-[42px] w-full cursor-pointer items-center justify-center rounded-[60px] border bg-white text-sm font-normal transition delay-150 duration-300 ease-in-out hover:border-white hover:bg-(--color-badge)">
+      <button className="flex h-[42px] w-full cursor-pointer items-center justify-center rounded-[60px] border bg-white text-sm font-normal transition delay-150 duration-300 ease-in-out hover:border-white hover:bg-badge">
         Subscribe to Newsletter
       </button>
     </form>
