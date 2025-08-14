@@ -12,7 +12,7 @@ export const Hero = () => {
   ];
 
   return (
-    <section className="mb-[50px] bg-category-background xl:mb-[72px]">
+    <section className="bg-category-background mb-[50px] xl:mb-[72px]">
       <Container>
         <div className="flex flex-col items-center sm:flex-row sm:justify-between md:justify-evenly xl:justify-between">
           <div className="pt-[40px] md:pb-[20px] xl:pt-[100px] xl:pb-[50px]">
@@ -20,12 +20,14 @@ export const Hero = () => {
               <h1 className="font-hubot w-[315px] text-4xl font-black xl:w-[580px] xl:text-6xl">
                 FIND CLOTHES THAT MATCHES YOUR STYLE
               </h1>
-              <p className="max-w-[358px] text-sm text-primary xl:max-w-[580px] xl:text-base">
+              <p className="text-primary max-w-[358px] text-sm xl:max-w-[580px] xl:text-base">
                 Browse through our diverse range of meticulously crafted
                 garments, designed to bring out your individuality and cater to
                 your sense of style.
               </p>
-              <Button variant="primary" label="Shop Now" href="/shop" />
+              <Button variant="primary" href="/shop">
+                Shop Now
+              </Button>
             </div>
             <div className="grid-cols-[1fr 1px 1fr] md:grid-cols-[1fr 1px 1fr 1px 1fr] mx-auto grid max-w-[280px] justify-between justify-items-center md:mx-0 md:max-w-[600px]">
               {usp.map((item, index) => (
@@ -39,13 +41,13 @@ export const Hero = () => {
                   <span className="text-2xl font-medium xl:text-4xl">
                     {item.value}
                   </span>
-                  <p className="text-xs text-primary xl:text-base">
+                  <p className="text-primary text-xs xl:text-base">
                     {item.label}
                   </p>
                 </div>
               ))}
-              <div className="col-start-2 col-end-3 row-start-1 h-[52px] w-[1px] justify-self-center bg-secondary xl:h-[74px]"></div>
-              <div className="col-start-4 col-end-5 row-start-1 hidden h-[52px] w-[1px] bg-secondary md:block xl:h-[74px]"></div>
+              <div className="bg-secondary col-start-2 col-end-3 row-start-1 h-[52px] w-[1px] justify-self-center xl:h-[74px]"></div>
+              <div className="bg-secondary col-start-4 col-end-5 row-start-1 hidden h-[52px] w-[1px] md:block xl:h-[74px]"></div>
             </div>
           </div>
           <div className="relative sm:self-end">

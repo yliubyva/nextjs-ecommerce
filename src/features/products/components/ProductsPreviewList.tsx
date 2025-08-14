@@ -70,7 +70,9 @@ export const ProductsPreviewList: React.FC<Props> = ({
       <div className="mb-[24px] flex w-full gap-[16px] self-start overflow-hidden sm:self-center xl:mb-[44px] xl:h-[415px]">
         {renderProductList()}
       </div>
-      <Button variant="secondary" label="View All" onClick={handleClick} />
+      <Button variant="secondary" onClick={handleClick}>
+        View All
+      </Button>
     </div>
   );
 };

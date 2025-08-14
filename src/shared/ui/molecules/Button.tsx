@@ -4,19 +4,18 @@ import Link from "next/link";
 
 type ButtonProps = {
   variant: "primary" | "secondary";
-  label: string;
   href?: string;
   onClick?: () => void;
   addStyle?: string;
-  children?: React.ReactNode;
+  children: React.ReactNode;
 };
 
 export const Button: React.FC<ButtonProps> = ({
   variant,
-  label,
   href,
   onClick,
   addStyle,
+  children,
   ...props
 }) => {
   const baseStyles =
@@ -24,21 +23,20 @@ export const Button: React.FC<ButtonProps> = ({
   const variants = {
     primary:
       "hover:border-secondary bg-black font-normal text-white hover:bg-white hover:text-black",
-    secondary:
-      "border-secondary bg-white hover:bg-black hover:text-white",
+    secondary: "border-secondary bg-white hover:bg-black hover:text-white",
   };
   const finalClassName = clsx(baseStyles, variants[variant], addStyle);
 
   if (href) {
     return (
       <Link href={href} className={finalClassName}>
-        {label}
+        {children}
       </Link>
     );
   }
   return (
     <button onClick={onClick} {...props} className={finalClassName}>
-      {label}
+      {children}
     </button>
   );
 };
@@ -57,8 +55,8 @@ export const PaginationButton: React.FC<PaginationButtonProps> = ({
     <button
       {...props}
       className={clsx(
-        "flex h-[36px] w-[36px] cursor-pointer items-center justify-center font-normal text-primary",
-        isActive && "rounded-[8px] bg-secondary text-black",
+        "text-primary flex h-[36px] w-[36px] cursor-pointer items-center justify-center font-normal",
+        isActive && "bg-secondary rounded-[8px] text-black",
       )}
     >
       {label}
@@ -79,9 +77,14 @@ export const PaginationArrowButton: React.FC<PaginationArrowButtonProps> = ({
   return (
     <button
       {...props}
-      className="flex cursor-pointer items-center gap-[8px] rounded-[8px] border border-secondary p-[10px] font-normal"
+      className="border-secondary flex cursor-pointer items-center gap-[8px] rounded-[8px] border p-[10px] font-normal"
     >
-      <Arrow className={clsx(isNext && "order-2 scale-x-[-1]")} />
+      <Arrow
+        className={clsx(
+          isNext && "order-2 scale-x-[-1]",
+          "h-[16px] w-[16px] fill-black md:h-[20px] md:w-[20px]",
+        )}
+      />
       <span>{label}</span>
     </button>
   );

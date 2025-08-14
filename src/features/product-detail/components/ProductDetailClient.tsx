@@ -64,7 +64,7 @@ export const ProductDetailClient: React.FC<Props> = ({ product, children }) => {
           <div className="flex flex-col gap-[24px]">
             <Divider />
             <div>
-              <p className="mb-[16px] text-sm text-primary xl:text-base">
+              <p className="text-primary mb-[16px] text-sm xl:text-base">
                 Select Colors
               </p>
               <SingleColorSelect
@@ -75,7 +75,7 @@ export const ProductDetailClient: React.FC<Props> = ({ product, children }) => {
             </div>
             <Divider />
             <div>
-              <p className="mb-[16px] text-sm text-primary xl:text-base">
+              <p className="text-primary mb-[16px] text-sm xl:text-base">
                 Chooze Size
               </p>
               <SingleSizeSelect
@@ -113,10 +113,11 @@ export const ProductDetailClient: React.FC<Props> = ({ product, children }) => {
                     dispatch(addToCart(itemForCart));
                   }
                 }}
-                label="Add to Cart"
                 variant="primary"
                 addStyle="max-w-full"
-              />
+              >
+                Add to Cart
+              </Button>
             </div>
           </div>
         </div>
