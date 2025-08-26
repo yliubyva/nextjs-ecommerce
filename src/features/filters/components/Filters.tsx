@@ -4,13 +4,11 @@ import { MultiColorSelect } from "@/shared/ui/molecules/SelectColor";
 import { MultiSizeSelect } from "@/shared/ui/molecules/SelectSize";
 import { PriceRangeSlider } from "@/features/filters/components/PriceRangeSlider";
 import { SelectType } from "@/features/filters/components/SelectType";
-import { Button } from "@/shared/ui/molecules/Button";
 import { FilterDropdown } from "./FilterDropdown";
 import Filter from "@public/icons/icon-filters.svg";
 import CloseIcon from "@public/icons/icon-close.svg";
-import { useAppDispatch, useAppSelector } from "@/lib/redux/redux-hooks";
-import { applyFilters } from "@/features/products/store/productsSlice";
-import { resetAndApplyFilters } from "@/features/filters/store/filtersThunks";
+import { useAppDispatch } from "@/lib/redux/redux-hooks";
+import { resetFilters } from "../store/filtersSlice";
 
 type FiltersProps = {
   isOpen: boolean;
@@ -62,7 +60,6 @@ export const Filters: React.FC<FiltersProps> = ({
 };
 
 const FiltersBody = () => {
-  const selectedOptions = useAppSelector((store) => store.filters.selected);
   const dispatch = useAppDispatch();
   return (
     <>
@@ -82,15 +79,8 @@ const FiltersBody = () => {
       <FilterDropdown title="Size">
         <MultiSizeSelect />
       </FilterDropdown>
-      <Button
-        variant="primary"
-        onClick={() => dispatch(applyFilters(selectedOptions))}
-        addStyle="my-[20px] w-full max-w-[768px] xl:max-w-[295px]"
-      >
-        Apply Filter
-      </Button>
       <button
-        onClick={() => dispatch(resetAndApplyFilters())}
+        onClick={() => dispatch(resetFilters())}
         className="w-full cursor-pointer"
       >
         <span className="hover:border-b">Reset Filters</span>

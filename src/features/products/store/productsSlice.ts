@@ -1,30 +1,30 @@
 import { Product } from "@/features/products/types/product";
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
-import { FilterSelectedOptions } from "@/features/filters/store/filtersSlice";
-import { applyFilter } from "@/features/products/utils/product-filters";
-import { doSort, SortType } from "@/features/products/utils/product-sorts";
+import { SortType } from "@/features/products/utils/product-sorts";
+
+type SelectGender = "all" | "men" | "women";
 
 interface ProductState {
   all: Product[];
-  filteredByCategory: Product[];
-  filtered: Product[];
+  searchQuery: string;
+  selectedGender: SelectGender;
+  sortOption: SortType;
   pagination: {
     currentPage: number;
     itemsPerPage: number;
   };
-  sortOption: SortType;
 }
 
 const initialState: ProductState = {
   all: [],
-  filteredByCategory: [],
-  filtered: [],
+  searchQuery: "",
+  selectedGender: "all",
+  sortOption: "none",
   pagination: {
     currentPage: 1,
     itemsPerPage: 6,
   },
-  sortOption: "none",
 };
 
 export const productsSlice = createSlice({
@@ -34,39 +34,23 @@ export const productsSlice = createSlice({
     initializeAllProducts(state, action: PayloadAction<Product[]>) {
       state.all = action.payload;
     },
-    initializeFilteredProducts(state, action: PayloadAction<Product[]>) {
-      state.filteredByCategory = action.payload;
-      state.filtered = action.payload;
+    setSearchQuery(state, action: PayloadAction<string>) {
+      state.searchQuery = action.payload.toLowerCase();
+      state.pagination.currentPage = 1;
     },
-    applyFilters(state, action: PayloadAction<FilterSelectedOptions>) {
-      state.filtered = applyFilter(state.filteredByCategory, action.payload);
-      if (state.sortOption) {
-        state.filtered = doSort(state.filtered, state.sortOption);
-      }
+    setSelectedGender(state, action: PayloadAction<SelectGender>) {
+      state.selectedGender = action.payload;
       state.pagination.currentPage = 1;
     },
     setItemsPerPage(state, action: PayloadAction<number>) {
       state.pagination.itemsPerPage = action.payload;
+      state.pagination.currentPage = 1;
     },
     setCurrentPage(state, action: PayloadAction<number>) {
       state.pagination.currentPage = action.payload;
     },
-    goToPrevPage(state) {
-      if (state.pagination.currentPage > 1) {
-        state.pagination.currentPage = state.pagination.currentPage - 1;
-      }
-    },
-    goToNextPage(state) {
-      if (
-        state.pagination.currentPage <
-        Math.ceil(state.filtered.length / state.pagination.itemsPerPage)
-      ) {
-        state.pagination.currentPage = state.pagination.currentPage + 1;
-      }
-    },
     sortProducts(state, action: PayloadAction<SortType>) {
       state.sortOption = action.payload;
-      state.filtered = doSort(state.filtered, action.payload);
       state.pagination.currentPage = 1;
     },
   },
@@ -74,12 +58,11 @@ export const productsSlice = createSlice({
 
 export const {
   initializeAllProducts,
-  initializeFilteredProducts,
-  applyFilters,
+  setSearchQuery,
+  setSelectedGender,
   setItemsPerPage,
   setCurrentPage,
-  goToPrevPage,
-  goToNextPage,
   sortProducts,
 } = productsSlice.actions;
+
 export default productsSlice.reducer;
