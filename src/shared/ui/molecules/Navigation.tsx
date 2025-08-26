@@ -100,7 +100,7 @@ export const Navigation = () => {
               Shop
               <Arrow
                 className={clsx(
-                  "relative z-20 fill-white transition duration-300 ease-in-out md:fill-black",
+                  "relative z-2 h-[13px] w-[13px] fill-white transition duration-300 ease-in-out md:fill-black",
                   openState.shop && "rotate-180",
                 )}
               />
@@ -108,7 +108,7 @@ export const Navigation = () => {
 
             <div
               className={clsx(
-                "transition-translate ml-[30px] flex flex-col justify-center gap-[30px] duration-200 ease-in-out md:absolute md:top-[45px] md:ml-0 md:h-[100px] md:w-[100px] md:bg-white md:pl-[10px] md:drop-shadow-xs xl:top-[60px]",
+                "transition-translate ml-[30px] flex flex-col justify-center gap-[30px] duration-200 ease-in-out md:absolute md:top-[45px] md:ml-0 md:h-[100px] md:w-[100px] md:bg-white md:pl-[10px] md:drop-shadow-xs xl:top-[50px]",
                 openState.shop
                   ? "h-full translate-y-0 opacity-100"
                   : "relative -z-1 hidden h-0 -translate-y-[30px] opacity-0",
