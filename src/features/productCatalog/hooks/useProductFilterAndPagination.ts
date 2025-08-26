@@ -1,5 +1,5 @@
 import { useAppDispatch, useAppSelector } from "@/lib/redux/redux-hooks";
-import { useWindowWidth } from "./useWindowWidth";
+import { useWindowWidth } from "@/shared/hooks/useWindowWidth";
 import React, { useEffect } from "react";
 import {
   selectPaginatedProducts,
