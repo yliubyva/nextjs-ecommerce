@@ -36,6 +36,7 @@ export function applyFilter(
 }
 
 export function filterByCategory(products: Product[], category: string) {
+  if (category === "all") return products;
   return products.filter(
     (product) => product.category === firstLetterToUpperCase(category),
   );
