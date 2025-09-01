@@ -28,7 +28,7 @@ export const Navigation = () => {
   }
 
   useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
+    const handleClickOutside = (event: MouseEvent | TouchEvent) => {
       if (
         openState.menu &&
         isMobile &&
@@ -39,9 +39,17 @@ export const Navigation = () => {
       }
     };
 
+    document.addEventListener("touchstart", handleClickOutside);
     document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("touchstart", handleClickOutside);
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
   }, [openState.menu, isMobile]);
+
+  useEffect(() => {
+    document.body.style.overflow = openState.menu ? "hidden" : "";
+  }, [openState.menu]);
 
   useEffect(() => {
     if (openState.menu) {
