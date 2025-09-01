@@ -9,6 +9,8 @@ import Image from "next/image";
 import { Stars } from "@/shared/ui/atoms/Stars";
 import { Container } from "@/shared/ui/atoms/Container";
 import { useWindowWidth } from "@/shared/hooks/useWindowWidth";
+import Checkmark from "@public/icons/checkmark.svg";
+import Autoplay from "embla-carousel-autoplay";
 
 type Review = {
   id: number;
@@ -25,9 +27,12 @@ type PropType = {
 
 export const ReviewsCarousel: React.FC<PropType> = (props) => {
   const { title, slides } = props;
-  const [emblaRef, emblaApi] = useEmblaCarousel({
-    loop: true,
-  });
+  const [emblaRef, emblaApi] = useEmblaCarousel(
+    {
+      loop: true,
+    },
+    [Autoplay({ playOnInit: true, delay: 5000 })],
+  );
 
   const {
     prevBtnDisabled,
@@ -43,11 +48,11 @@ export const ReviewsCarousel: React.FC<PropType> = (props) => {
   return (
     <>
       <Container>
-        <div className="mb-[24px] flex justify-between xl:mb-[40px]">
+        <div className="mb- mb-6 flex justify-between xl:mb-10">
           <h2 className="font-hubot w-[286px] text-3xl font-black uppercase md:w-full xl:text-5xl">
             {title}
           </h2>
-          <div className="flex items-center justify-between gap-[4px]">
+          <div className="flex items-center justify-between gap-10 md:gap-1">
             <PrevButton
               onClick={onPrevButtonClick}
               disabled={prevBtnDisabled}
@@ -59,26 +64,21 @@ export const ReviewsCarousel: React.FC<PropType> = (props) => {
           </div>
         </div>
       </Container>
-      <div className="relative mx-auto w-full min-w-[358px] px-[10px]">
+      <div className="relative mx-auto w-full min-w-[358px] px-2.5">
         <div className="overflow-hidden" ref={emblaRef}>
-          <div className="-ml-[20px] flex touch-pan-y touch-pinch-zoom">
+          <div className="-ml-1.25 flex touch-pan-y touch-pinch-zoom">
             {slides.concat(slides).map((review, index) => (
               <div
                 className="flex-[0_0_40%] pl-[20px] md:flex-[0_0_0]"
                 key={index}
               >
-                <div className="border-secondary h-full w-full min-w-[312px] rounded-[20px] border p-[24px] xl:min-w-[400px]">
+                <div className="border-secondary h-full w-full min-w-[312px] rounded-[20px] border p-6 xl:min-w-[400px]">
                   <Stars rating={review.rating} showNum={false} />
-                  <div className="mt-[12px] mb-[8px] flex gap-[4px]">
+                  <div className="mt-3 mb-2 flex items-center gap-1">
                     <p className="text-base font-bold xl:text-xl">
                       {review.userName}
                     </p>
-                    <Image
-                      src="/icons/checkmark.svg"
-                      alt="checkmark icon"
-                      width={16}
-                      height={16}
-                    />
+                    <Checkmark width={19} height={19} />
                   </div>
                   <p className="text-primary max-w-[336px] min-w-[250px] text-xs xl:text-base">
                     {review.textReview}
