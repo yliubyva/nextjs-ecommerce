@@ -8,8 +8,8 @@ export function sortProductsByPrice(
   direction: Direction,
 ): Product[] {
   return [...products].sort((a, b) => {
-    let finalPriceA = getFinalPrice(a);
-    let finalPriceB = getFinalPrice(b);
+    const finalPriceA = getFinalPrice(a);
+    const finalPriceB = getFinalPrice(b);
 
     return direction === "desc"
       ? finalPriceB - finalPriceA

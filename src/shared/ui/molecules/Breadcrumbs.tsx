@@ -22,7 +22,7 @@ export const Breadcrumbs = () => {
           )}
         </BreadcrumbItem>
         {pathNames.map((link, index) => {
-          let href = `/${pathNames.slice(0, index + 1).join("/")}`;
+          const href = `/${pathNames.slice(0, index + 1).join("/")}`;
           return (
             <BreadcrumbItem key={index}>
               <BreadcrumbLink
