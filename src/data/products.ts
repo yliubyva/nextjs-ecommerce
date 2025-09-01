@@ -1,4 +1,4 @@
-import { Product } from "@/types/product";
+import { Product } from "@/features/products/types/product";
 
 export const products: Product[] = [
   {
@@ -14,28 +14,25 @@ export const products: Product[] = [
       {
         name: "black",
         images: [
-          "/clothes/tape-detail-tshirt-1.png",
-          "/clothes/tape-detail-tshirt-2.png",
-          "/clothes/tape-detail-tshirt-3.png",
-          "/clothes/tape-detail-tshirt-1.png",
-          "/clothes/tape-detail-tshirt-2.png",
-          "/clothes/tape-detail-tshirt-3.png",
+          "/clothes/tape-detail-tshirt-1.webp",
+          "/clothes/tape-detail-tshirt-2.webp",
+          "/clothes/tape-detail-tshirt-3.webp",
         ],
       },
       {
         name: "white",
         images: [
-          "/clothes/tape-detail-tshirt-white-1.png",
-          "/clothes/tape-detail-tshirt-white-2.png",
-          "/clothes/tape-detail-tshirt-white-3.png",
+          "/clothes/tape-detail-tshirt-white-1.webp",
+          "/clothes/tape-detail-tshirt-white-2.webp",
+          "/clothes/tape-detail-tshirt-white-3.webp",
         ],
       },
       {
         name: "gray",
         images: [
-          "/clothes/tape-detail-tshirt-gray-1.png",
-          "/clothes/tape-detail-tshirt-gray-2.png",
-          "/clothes/tape-detail-tshirt-gray-3.png",
+          "/clothes/tape-detail-tshirt-gray-1.webp",
+          "/clothes/tape-detail-tshirt-gray-2.webp",
+          "/clothes/tape-detail-tshirt-gray-3.webp",
         ],
       },
     ],
@@ -62,8 +59,8 @@ export const products: Product[] = [
       {
         name: "blue",
         images: [
-          "/clothes/skinny-fit-jeans-1.png",
-          "/clothes/skinny-fit-jeans-2.png",
+          "/clothes/skinny-fit-jeans-1.webp",
+          "/clothes/skinny-fit-jeans-2.webp",
         ],
       },
     ],
@@ -90,25 +87,25 @@ export const products: Product[] = [
       {
         name: "red",
         images: [
-          "/clothes/checkered-shirt-1.png",
-          "/clothes/checkered-shirt-2.png",
-          "/clothes/checkered-shirt-3.png",
+          "/clothes/checkered-shirt-1.webp",
+          "/clothes/checkered-shirt-2.webp",
+          "/clothes/checkered-shirt-3.webp",
         ],
       },
       {
         name: "blue",
         images: [
-          "/clothes/checkered-shirt-blue-1.png",
-          "/clothes/checkered-shirt-blue-2.png",
-          "/clothes/checkered-shirt-blue-3.png",
+          "/clothes/checkered-shirt-blue-1.webp",
+          "/clothes/checkered-shirt-blue-2.webp",
+          "/clothes/checkered-shirt-blue-3.webp",
         ],
       },
       {
         name: "green",
         images: [
-          "/clothes/checkered-shirt-green-1.png",
-          "/clothes/checkered-shirt-green-2.png",
-          "/clothes/checkered-shirt-green-3.png",
+          "/clothes/checkered-shirt-green-1.webp",
+          "/clothes/checkered-shirt-green-2.webp",
+          "/clothes/checkered-shirt-green-3.webp",
         ],
       },
     ],
@@ -135,17 +132,17 @@ export const products: Product[] = [
       {
         name: "orange",
         images: [
-          "/clothes/sleeve-striped-tshirt-1.png",
-          "/clothes/sleeve-striped-tshirt-2.png",
-          "/clothes/sleeve-striped-tshirt-3.png",
+          "/clothes/sleeve-striped-tshirt-1.webp",
+          "/clothes/sleeve-striped-tshirt-2.webp",
+          "/clothes/sleeve-striped-tshirt-3.webp",
         ],
       },
       {
         name: "black",
         images: [
-          "/clothes/black-striped-tshirt-1.png",
-          "/clothes/black-striped-tshirt-2.png",
-          "/clothes/black-striped-tshirt-3.png",
+          "/clothes/black-striped-tshirt-1.webp",
+          "/clothes/black-striped-tshirt-2.webp",
+          "/clothes/black-striped-tshirt-3.webp",
         ],
       },
     ],
@@ -172,17 +169,17 @@ export const products: Product[] = [
       {
         name: "green",
         images: [
-          "/clothes/vertical-striped-shirt-1.png",
-          "/clothes/vertical-striped-shirt-2.png",
-          "/clothes/vertical-striped-shirt-3.png",
+          "/clothes/vertical-striped-shirt-1.webp",
+          "/clothes/vertical-striped-shirt-2.webp",
+          "/clothes/vertical-striped-shirt-3.webp",
         ],
       },
       {
         name: "black",
         images: [
-          "/clothes/vertical-striped-shirt-black-1.png",
-          "/clothes/vertical-striped-shirt-black-2.png",
-          "/clothes/vertical-striped-shirt-black-3.png",
+          "/clothes/vertical-striped-shirt-black-1.webp",
+          "/clothes/vertical-striped-shirt-black-2.webp",
+          "/clothes/vertical-striped-shirt-black-3.webp",
         ],
       },
     ],
@@ -209,25 +206,25 @@ export const products: Product[] = [
       {
         name: "orange",
         images: [
-          "/clothes/courage-graphic-tshirt-1.png",
-          "/clothes/courage-graphic-tshirt-2.png",
-          "/clothes/courage-graphic-tshirt-3.png",
+          "/clothes/courage-graphic-tshirt-1.webp",
+          "/clothes/courage-graphic-tshirt-2.webp",
+          "/clothes/courage-graphic-tshirt-3.webp",
         ],
       },
       {
         name: "green",
         images: [
-          "/clothes/courage-graphic-tshirt-green-1.png",
-          "/clothes/courage-graphic-tshirt-green-2.png",
-          "/clothes/courage-graphic-tshirt-green-3.png",
+          "/clothes/courage-graphic-tshirt-green-1.webp",
+          "/clothes/courage-graphic-tshirt-green-2.webp",
+          "/clothes/courage-graphic-tshirt-green-3.webp",
         ],
       },
       {
         name: "black",
         images: [
-          "/clothes/courage-graphic-tshirt-black-1.png",
-          "/clothes/courage-graphic-tshirt-black-2.png",
-          "/clothes/courage-graphic-tshirt-black-3.png",
+          "/clothes/courage-graphic-tshirt-black-1.webp",
+          "/clothes/courage-graphic-tshirt-black-2.webp",
+          "/clothes/courage-graphic-tshirt-black-3.webp",
         ],
       },
     ],
@@ -254,8 +251,8 @@ export const products: Product[] = [
       {
         name: "gray",
         images: [
-          "/clothes/loose-fit-shorts-1.png",
-          "/clothes/loose-fit-shorts-2.png",
+          "/clothes/loose-fit-shorts-1.webp",
+          "/clothes/loose-fit-shorts-2.webp",
         ],
       },
     ],
@@ -281,8 +278,8 @@ export const products: Product[] = [
       {
         name: "black",
         images: [
-          "/clothes/faded-skinny-jeans-1.png",
-          "/clothes/faded-skinny-jeans-2.png",
+          "/clothes/faded-skinny-jeans-1.webp",
+          "/clothes/faded-skinny-jeans-2.webp",
         ],
       },
     ],
@@ -294,6 +291,440 @@ export const products: Product[] = [
     arrivalDate: new Date("2025-03-10"),
     inStock: true,
     tags: ["bestseller"],
+    dressStyle: "Casual",
+  },
+  {
+    id: "tshirt-002",
+    title: "Gradient Graphic T-shirt",
+    category: "Men",
+    type: "T-shirt",
+    brand: "Zara",
+    price: 145,
+    discount: 35,
+    rating: 4.2,
+    colors: [
+      {
+        name: "white",
+        images: [
+          "/clothes/gradient-graphic-tshirt-1.webp",
+          "/clothes/gradient-graphic-tshirt-2.webp",
+          "/clothes/gradient-graphic-tshirt-3.webp",
+        ],
+      },
+    ],
+    sizes: ["Small", "Medium", "Large"],
+    description:
+      "Eye-catching gradient graphics with a relaxed fit for everyday wear.",
+    popularity: 88,
+    reviews: [],
+    arrivalDate: new Date("2025-05-12"),
+    inStock: true,
+    tags: ["bestseller"],
+    dressStyle: "Casual",
+  },
+  {
+    id: "polo-001",
+    title: "Polo with Tipping Details",
+    category: "Men",
+    type: "Shirts",
+    brand: "Calvin Klein",
+    price: 70,
+    discount: null,
+    rating: 4.6,
+    colors: [
+      {
+        name: "blue",
+        images: [
+          "/clothes/polo-with-tipping-details-blue-1.webp",
+          "/clothes/polo-with-tipping-details-blue-2.webp",
+          "/clothes/polo-with-tipping-details-blue-3.webp",
+        ],
+      },
+      {
+        name: "purple",
+        images: [
+          "/clothes/polo-with-tipping-details-1.webp",
+          "/clothes/polo-with-tipping-details-2.webp",
+          "/clothes/polo-with-tipping-details-3.webp",
+        ],
+      },
+    ],
+    sizes: ["Small", "Medium", "Large", "X-Large"],
+    description:
+      "Classic polo design with refined tipping details for a smart look.",
+    popularity: 91,
+    reviews: [],
+    arrivalDate: new Date("2025-04-25"),
+    inStock: true,
+    tags: ["bestseller"],
+    dressStyle: "Formal",
+  },
+  {
+    id: "polo-002",
+    title: "Polo with Contrast Trims",
+    category: "Men",
+    type: "Shirts",
+    brand: "Versache",
+    price: 80,
+    discount: 10,
+    rating: 4,
+    colors: [
+      {
+        name: "blue",
+        images: [
+          "/clothes/polo-with-contrast-trims-1.webp",
+          "/clothes/polo-with-contrast-trims-2.webp",
+          "/clothes/polo-with-contrast-trims-3.webp",
+        ],
+      },
+      {
+        name: "brown",
+        images: [
+          "/clothes/polo-with-contrast-trims-brown-1.webp",
+          "/clothes/polo-with-contrast-trims-brown-2.webp",
+          "/clothes/polo-with-contrast-trims-brown-3.webp",
+        ],
+      },
+      {
+        name: "red",
+        images: [
+          "/clothes/polo-with-contrast-trims-darkred-1.webp",
+          "/clothes/polo-with-contrast-trims-darkred-2.webp",
+          "/clothes/polo-with-contrast-trims-darkred-3.webp",
+        ],
+      },
+    ],
+    sizes: ["Small", "Medium", "Large"],
+    description:
+      "Soft cotton polo featuring bold contrast trims for a stylish edge.",
+    popularity: 86,
+    reviews: [],
+    arrivalDate: new Date("2025-06-01"),
+    inStock: true,
+    tags: ["bestseller"],
+    dressStyle: "Casual",
+  },
+  {
+    id: "tshirt-008",
+    title: "One Life Graphic T-shirt",
+    category: "Men",
+    type: "T-shirt",
+    brand: "Versache",
+    price: 260,
+    discount: 40,
+    rating: 4.5,
+    colors: [
+      {
+        name: "green",
+        images: [
+          "/clothes/one-life-grafic-tshirt-green-1.webp",
+          "/clothes/one-life-grafic-tshirt-green-2.webp",
+          "/clothes/one-life-grafic-tshirt-green-3.webp",
+        ],
+      },
+      {
+        name: "dark-green",
+        images: [
+          "/clothes/one-life-grafic-tshirt-dark-green-1.webp",
+          "/clothes/one-life-grafic-tshirt-dark-green-2.webp",
+          "/clothes/one-life-grafic-tshirt-dark-green-3.webp",
+        ],
+      },
+      {
+        name: "dark-purple",
+        images: [
+          "/clothes/one-life-grafic-tshirt-dark-purple-1.webp",
+          "/clothes/one-life-grafic-tshirt-dark-purple-2.webp",
+          "/clothes/one-life-grafic-tshirt-dark-purple-3.webp",
+        ],
+      },
+    ],
+    sizes: ["Small", "Medium", "Large", "X-Large"],
+    description:
+      "This graphic t-shirt which is perfect for any occasion. Crafted from a soft and breathable fabric, it offers superior comfort and style.",
+    popularity: 76,
+    reviews: [],
+    arrivalDate: new Date("2025-06-01"),
+    inStock: true,
+    tags: ["bestseller"],
+    dressStyle: "Casual",
+  },
+  {
+    id: "tshirt-010",
+    title: "Discover 1985 T-shirt",
+    category: "Women",
+    type: "T-shirt",
+    brand: "Calvin Klein",
+    price: 200,
+    discount: 5,
+    rating: 4.5,
+    colors: [
+      {
+        name: "black",
+        images: [
+          "/clothes/discover-tshirt-black-1.webp",
+          "/clothes/discover-tshirt-black-2.webp",
+          "/clothes/discover-tshirt-black-3.webp",
+        ],
+      },
+      {
+        name: "brown",
+        images: [
+          "/clothes/discover-tshirt-brown-1.webp",
+          "/clothes/discover-tshirt-brown-2.webp",
+          "/clothes/discover-tshirt-brown-3.webp",
+        ],
+      },
+      {
+        name: "gray",
+        images: [
+          "/clothes/discover-tshirt-gray-1.webp",
+          "/clothes/discover-tshirt-gray-2.webp",
+          "/clothes/discover-tshirt-gray-3.webp",
+        ],
+      },
+    ],
+    sizes: ["Small", "Medium", "Large"],
+    description:
+      "Retro-inspired T-shirt with bold 'Discover 1985' front print.",
+    popularity: 76,
+    reviews: [],
+    arrivalDate: new Date("2025-06-02"),
+    inStock: true,
+    tags: ["bestseller"],
+    dressStyle: "Casual",
+  },
+  {
+    id: "tshirt-011",
+    title: "Beauty World T-shirt",
+    category: "Women",
+    type: "T-shirt",
+    brand: "Zara",
+    price: 220,
+    discount: 5,
+    rating: 4.5,
+    colors: [
+      {
+        name: "black",
+        images: [
+          "/clothes/beauty-tshirt-black-1.webp",
+          "/clothes/beauty-tshirt-black-2.webp",
+          "/clothes/beauty-tshirt-black-3.webp",
+        ],
+      },
+      {
+        name: "green",
+        images: [
+          "/clothes/beauty-tshirt-green-1.webp",
+          "/clothes/beauty-tshirt-green-2.webp",
+          "/clothes/beauty-tshirt-green-3.webp",
+        ],
+      },
+    ],
+    sizes: ["Small", "Medium", "Large"],
+    description:
+      "Soft cotton tee with 'Beauty World' graphic — perfect for casual days.",
+    popularity: 81,
+    reviews: [],
+    arrivalDate: new Date("2025-06-02"),
+    inStock: true,
+    tags: ["bestseller"],
+    dressStyle: "Casual",
+  },
+  {
+    id: "tshirt-012",
+    title: "Don't Fear T-shirt",
+    category: "Women",
+    type: "T-shirt",
+    brand: "Zara",
+    price: 200,
+    discount: null,
+    rating: 4,
+    colors: [
+      {
+        name: "red",
+        images: [
+          "/clothes/dont-fear-tshirt-dark-red-1.webp",
+          "/clothes/dont-fear-tshirt-dark-red-2.webp",
+          "/clothes/dont-fear-tshirt-dark-red-3.webp",
+        ],
+      },
+      {
+        name: "white",
+        images: [
+          "/clothes/dont-fear-tshirt-white-1.webp",
+          "/clothes/dont-fear-tshirt-white-2.webp",
+          "/clothes/dont-fear-tshirt-white-3.webp",
+        ],
+      },
+    ],
+    sizes: ["Small", "Medium", "Large"],
+    description:
+      "Graphic tee with empowering print: 'Don’t fear, do it anyway. Born to be wild & free.",
+    popularity: 89,
+    reviews: [],
+    arrivalDate: new Date("2025-05-29"),
+    inStock: true,
+    tags: ["bestseller"],
+    dressStyle: "Casual",
+  },
+  {
+    id: "tshirt-013",
+    title: "Melted T-shirt",
+    category: "Women",
+    type: "T-shirt",
+    brand: "Prade",
+    price: 220,
+    discount: null,
+    rating: 5,
+    colors: [
+      {
+        name: "black",
+        images: [
+          "/clothes/melted-tshirt-black-1.webp",
+          "/clothes/melted-tshirt-black-2.webp",
+          "/clothes/melted-tshirt-black-3.webp",
+        ],
+      },
+      {
+        name: "white",
+        images: [
+          "/clothes/melted-tshirt-white-1.webp",
+          "/clothes/melted-tshirt-white-2.webp",
+          "/clothes/melted-tshirt-white-3.webp",
+        ],
+      },
+      {
+        name: "orange",
+        images: [
+          "/clothes/melted-tshirt-orange-1.webp",
+          "/clothes/melted-tshirt-orange-2.webp",
+          "/clothes/melted-tshirt-orange-3.webp",
+        ],
+      },
+    ],
+    sizes: ["Small", "Medium"],
+    description:
+      "Bold 'Melted' text print on a soft pastel background for standout streetwear.",
+    popularity: 77,
+    reviews: [],
+    arrivalDate: new Date("2025-05-15"),
+    inStock: true,
+    tags: ["bestseller"],
+    dressStyle: "Casual",
+  },
+  {
+    id: "jeans-010",
+    title: "Urban Classic Ripped Jeans",
+    category: "Women",
+    type: "T-shirt",
+    brand: "Gucci",
+    price: 195,
+    discount: 20,
+    rating: 3.5,
+    colors: [
+      {
+        name: "blue",
+        images: ["/clothes/jeans-blue-1.webp", "/clothes/jeans-blue-2.webp"],
+      },
+      {
+        name: "black",
+        images: ["/clothes/jeans-black-1.webp", "/clothes/jeans-black-2.webp"],
+      },
+    ],
+    sizes: ["Medium", "Large", "X-Large"],
+    description:
+      "Ripped jeans with urban washed finish — designed for both comfort and bold style.",
+    popularity: 92,
+    reviews: [],
+    arrivalDate: new Date("2025-06-15"),
+    inStock: true,
+    tags: ["bestseller"],
+    dressStyle: "Casual",
+  },
+  {
+    id: "skirt-001",
+    title: "Flared Summer Skirt",
+    category: "Women",
+    type: "Skirts",
+    brand: "Zara",
+    price: 100,
+    discount: null,
+    rating: 5,
+    colors: [
+      {
+        name: "black",
+        images: ["/clothes/skirt-black-1.webp", "/clothes/skirt-black-2.webp"],
+      },
+      {
+        name: "blue",
+        images: ["/clothes/skirt-blue-1.webp", "/clothes/skirt-blue-2.webp"],
+      },
+    ],
+    sizes: ["Medium", "Large", "X-Large"],
+    description:
+      "Lightweight flared skirt perfect for sunny days and breezy comfort.",
+    popularity: 68,
+    reviews: [],
+    arrivalDate: new Date("2025-06-15"),
+    inStock: true,
+    tags: ["bestseller"],
+    dressStyle: "Casual",
+  },
+  {
+    id: "hoodie-001",
+    title: "Graphic Hoodie - Don't Fear",
+    category: "Women",
+    type: "Hoodie",
+    brand: "Zara",
+    price: 150,
+    discount: 20,
+    rating: 4.7,
+    colors: [
+      {
+        name: "black",
+        images: [
+          "/clothes/dont-fear-hoodie-1.webp",
+          "/clothes/dont-fear-hoodie-2.webp",
+        ],
+      },
+    ],
+    sizes: ["Small", "Medium", "Large", "X-Large"],
+    description:
+      "Oversized hoodie with bold text print: 'don't fear, do it anyway. born to be wild & free'. Made for comfort and statement style.",
+    popularity: 84,
+    reviews: [],
+    arrivalDate: new Date("2025-07-10"),
+    inStock: true,
+    tags: ["new", "streetwear"],
+    dressStyle: "Casual",
+  },
+  {
+    id: "hoodie-002",
+    title: "Melted Print Hoodie",
+    category: "Women",
+    type: "Hoodie",
+    brand: "Zara",
+    price: 140,
+    discount: null,
+    rating: 4.5,
+    colors: [
+      {
+        name: "black",
+        images: [
+          "/clothes/melted-hoodie-black-1.webp",
+          "/clothes/melted-hoodie-black-2.webp",
+        ],
+      },
+    ],
+    sizes: ["Medium", "Large"],
+    description:
+      "Minimalist hoodie featuring bold 'melted' print across the chest. Soft fabric for everyday wear.",
+    popularity: 72,
+    reviews: [],
+    arrivalDate: new Date("2025-06-28"),
+    inStock: true,
+    tags: ["limited"],
     dressStyle: "Casual",
   },
 ];
