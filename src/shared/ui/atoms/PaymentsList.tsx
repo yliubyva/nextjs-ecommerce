@@ -6,7 +6,7 @@ export function PaymentsList() {
     { name: "mastercard", src: "/icons/mastercard.svg" },
     { name: "paypal", src: "/icons/paypal.svg" },
     { name: "applePay", src: "/icons/apple-pay.svg" },
-    { name: "gPay", src: "/icons/g-Pay.svg" },
+    { name: "gPay", src: "/icons/g-pay.svg" },
   ];
   return (
     <ul className="flex gap-[12px]">
