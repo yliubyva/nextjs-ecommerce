@@ -22,20 +22,14 @@ type Props = {
 };
 
 export const ProductDetailClient: React.FC<Props> = ({ product, children }) => {
-  const [selectedColor, setSelectedColor] = useState<ColorName | null>(null);
-  const [selectedSize, setSelectedSize] = useState<SizeName | null>(null);
-  const [selectedQuantity, setSelectedQuantity] = useState<number>(1);
   const [isModalOpen, setIsModalOpen] = useState(false);
-
-  useEffect(() => {
-    if (!selectedColor && product.colors.length > 0) {
-      setSelectedColor(product.colors[0].name);
-    }
-
-    if (!selectedSize && product.sizes.length > 0) {
-      setSelectedSize(product.sizes[0]);
-    }
-  }, []);
+  const [selectedQuantity, setSelectedQuantity] = useState<number>(1);
+  const [selectedColor, setSelectedColor] = useState<ColorName | null>(
+    product.colors.length > 0 ? product.colors[0].name : null,
+  );
+  const [selectedSize, setSelectedSize] = useState<SizeName | null>(
+    product.sizes.length > 0 ? product.sizes[0] : null,
+  );
 
   const dispatch = useAppDispatch();
 
