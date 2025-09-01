@@ -55,6 +55,7 @@ export const Navigation = () => {
     if (openState.menu) {
       setOpenState((prev) => ({ ...prev, menu: false }));
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pathname]);
   return (
     <>
@@ -72,7 +73,10 @@ export const Navigation = () => {
             <Burger width={24} height={24} />
           )}
         </button>
-        <Link href="/" className="relative h-4.5 w-[126px] xl:h-7.5 xl:w-[160px]">
+        <Link
+          href="/"
+          className="relative h-4.5 w-[126px] xl:h-7.5 xl:w-[160px]"
+        >
           <Image
             src="/logo.svg"
             fill

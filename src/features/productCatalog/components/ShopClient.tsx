@@ -26,16 +26,18 @@ export const ShopClient: React.FC<Props> = ({ category }) => {
   useEffect(() => {
     dispatch(setSelectedGender(category));
 
-    if (searchQuery.length > 0) {
-      dispatch(setSearchQuery(""));
-    }
-
     const productsForCategory = filterByCategory(allProducts, category);
 
     const filtersAvaliableOptions =
       extractFilterOptionsFromProducts(productsForCategory);
     dispatch(initializeAvailableOptions(filtersAvaliableOptions));
   }, [allProducts, dispatch, category]);
+
+  useEffect(() => {
+    if (searchQuery.length > 0) {
+      dispatch(setSearchQuery(""));
+    }
+  }, [searchQuery.length, dispatch, category]);
 
   return <ProductCatalog title={firstLetterToUpperCase(category)} />;
 };

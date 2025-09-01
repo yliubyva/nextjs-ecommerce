@@ -38,7 +38,7 @@ export const useProductFilterAndPagination = () => {
 
   useEffect(() => {
     dispatch(setCurrentPage(1));
-  }, [totalItems]);
+  }, [totalItems, dispatch]);
 
   const showingStart = (currentPage - 1) * itemsPerPage + 1;
   const showingEnd = Math.min(currentPage * itemsPerPage, totalItems);

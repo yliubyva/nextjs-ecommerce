@@ -21,7 +21,8 @@ export const Modal: React.FC<Props> = ({
   const pathname = usePathname();
 
   useEffect(() => {
-    isOpen && onClose();
+    if (isOpen) onClose();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pathname]);
 
   useEffect(() => {
