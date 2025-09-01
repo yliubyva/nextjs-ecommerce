@@ -13,6 +13,8 @@ import { ColorName } from "@/features/products/types/colors";
 import { useAppDispatch } from "@/lib/redux/redux-hooks";
 import { addToCart } from "@/features/cart/store/cartSlice";
 import { CartItemType } from "@/features/cart/types/cartItem";
+import Check from "@public/icons/checkmark-white.svg";
+import { Modal } from "@/shared/ui/atoms/Modal";
 
 type Props = {
   product: Product;
@@ -23,6 +25,7 @@ export const ProductDetailClient: React.FC<Props> = ({ product, children }) => {
   const [selectedColor, setSelectedColor] = useState<ColorName | null>(null);
   const [selectedSize, setSelectedSize] = useState<SizeName | null>(null);
   const [selectedQuantity, setSelectedQuantity] = useState<number>(1);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     if (!selectedColor && product.colors.length > 0) {
@@ -48,7 +51,7 @@ export const ProductDetailClient: React.FC<Props> = ({ product, children }) => {
 
     return (
       <ThumbProductCarousel
-        key={isMobile ? "mobile" : "desktop"}
+        key={"thumb-carousel"}
         slides={selectedColorData.images}
         axis={isMobile ? "x" : "y"}
       />
@@ -65,7 +68,7 @@ export const ProductDetailClient: React.FC<Props> = ({ product, children }) => {
             <Divider />
             <div>
               <p className="text-primary mb-[16px] text-sm xl:text-base">
-                Select Colors
+                Select Color
               </p>
               <SingleColorSelect
                 colors={product.colors.map((color) => color.name)}
@@ -112,6 +115,7 @@ export const ProductDetailClient: React.FC<Props> = ({ product, children }) => {
                     };
                     dispatch(addToCart(itemForCart));
                   }
+                  setIsModalOpen(true);
                 }}
                 variant="primary"
                 addStyle="max-w-full"
@@ -122,6 +126,29 @@ export const ProductDetailClient: React.FC<Props> = ({ product, children }) => {
           </div>
         </div>
       </div>
+
+      <Modal
+        title=""
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+      >
+        <div className="flex flex-col items-center justify-center gap-4">
+          <div className="relative flex h-14 w-14 animate-bounce items-center justify-center rounded-full bg-emerald-500">
+            <Check className="fill-white" />
+          </div>
+          <p className="text-xl font-medium">Success!</p>
+          <p className="text-center">{product.title} has been added.</p>
+          <p>Continue shopping or go to cart.</p>
+          <div className="flex w-full flex-col items-center gap-4 md:flex-row md:justify-evenly md:gap-2">
+            <Button variant="primary" onClick={() => setIsModalOpen(false)}>
+              Continue
+            </Button>
+            <Button variant="secondary" href="/cart">
+              Go to cart
+            </Button>
+          </div>
+        </div>
+      </Modal>
     </section>
   );
 };
