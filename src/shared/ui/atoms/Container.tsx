@@ -1,5 +1,5 @@
 type Props = {
-  children: any;
+  children: React.ReactNode;
 };
 
 export const Container: React.FC<Props> = ({ children }) => {
