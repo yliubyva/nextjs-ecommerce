@@ -63,14 +63,14 @@ export const Hero = () => {
               alt="star-icon"
               width={44}
               height={44}
-              className="absolute top-[137px] left-[27px] xl:top-[280px] xl:left-0 xl:h-[56px] xl:w-[56px]"
+              className="animate-rise-fall absolute top-[137px] left-[27px] h-11 w-11 xl:top-[280px] xl:left-0 xl:h-14 xl:w-14"
             />
             <Image
               src="/vector-star.svg"
               alt="star-icon"
               width={76}
               height={76}
-              className="absolute top-[40px] right-[21px] xl:top-[86px] xl:right-0 xl:h-[104px] xl:w-[104px]"
+              className="animate-fall-rise absolute top-10 right-5 h-19 w-19 xl:top-[86px] xl:right-0 xl:h-26 xl:w-26"
             />
           </div>
         </div>

@@ -9,6 +9,30 @@
       transform: translateX(calc(-100% - 10%));
     }
   }
+
+  --animate-rise-fall: rise-fall 10s linear infinite;
+  --animate-fall-rise: fall-rise 10s linear infinite;
+
+  @keyframes rise-fall {
+    0%,
+    100% {
+      transform: translateY(10px);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  @keyframes fall-rise {
+    0%,
+    100% {
+      transform: translateY(-10px);
+    }
+    50% {
+      transform: translateY(10px);
+    }
+  }
+
   --breakpoint-xs: 25rem;
 
   --color-primary: rgba(0, 0, 0, 0.6);
