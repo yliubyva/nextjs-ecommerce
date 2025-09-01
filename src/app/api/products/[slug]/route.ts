@@ -1,15 +1,12 @@
 import { NextResponse } from "next/server";
-import { products } from "@/data/products";
+import { getProductBySlug } from "@/lib/api/products";
 
-type Params = {
-  params: {
-    slug: string;
-  };
-};
-
-export async function GET(_: Request, { params }: Params) {
+export async function GET(
+  request: Request,
+  { params }: { params: Promise<{ slug: string }> },
+) {
   const { slug } = await params;
-  const product = products.find((item) => item.id === slug);
+  const product = await getProductBySlug(slug);
 
   if (!product) {
     return NextResponse.json({ message: "Product not found" }, { status: 404 });

@@ -20,10 +20,16 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   const allProducts: Product[] = await getAllProducts();
+  const serializedProducts = allProducts.map((product) => {
+    return {
+      ...product,
+      arrivalDate: product.arrivalDate.toString(),
+    };
+  });
   return (
     <html lang="en">
       <body className="font-lexend flex h-screen flex-col font-extralight">
-        <StoreProvider allProducts={allProducts}>
+        <StoreProvider allProducts={serializedProducts}>
           <Header />
           <div className="mt-[64px] mb-[184px] flex-[1] xl:mt-[78px]">
             <Breadcrumbs />
