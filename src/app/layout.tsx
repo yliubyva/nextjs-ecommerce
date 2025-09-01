@@ -6,6 +6,7 @@ import "./globals.css";
 import StoreProvider from "./StoreProvider";
 import { getAllProducts } from "@/lib/api/products";
 import { Product } from "@/features/products/types/product";
+import { ScrollToTopButton } from "@/shared/ui/atoms/ScrollToTopButton";
 
 export const metadata: Metadata = {
   title: "Shop – Trendy Fashion Store",
@@ -27,6 +28,7 @@ export default async function RootLayout({
           <div className="mt-[64px] mb-[184px] flex-[1] xl:mt-[78px]">
             <Breadcrumbs />
             {children}
+            <ScrollToTopButton />
           </div>
           <footer className="bg-category-background">
             <Footer />
