@@ -5,16 +5,13 @@ import { notFound } from "next/navigation";
 import { Stars } from "@/shared/ui/atoms/Stars";
 import { Price } from "@/shared/ui/atoms/Price";
 
-type Params = {
-  params: {
-    id: string;
-    category: string;
-  };
-};
-
-export default async function ProductDetailPage({ params }: Params) {
+export default async function ProductDetailPage({
+  params,
+}: {
+  params: Promise<{ id: string; category: string }>;
+}) {
   const { id, category } = await params;
-  const res = await fetch(`http://localhost:3000/api/products/${id}`, {
+  const res = await fetch(`${process.env.BASE_URL ?? ""}/api/products/${id}`, {
     cache: "no-store",
   });
   const product: Product = await res.json();

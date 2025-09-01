@@ -1,13 +1,11 @@
 import { Container } from "@/shared/ui/atoms/Container";
 import { ShopClient } from "@/features/productCatalog/components/ShopClient";
 
-type Params = {
-  params: {
-    category: "men" | "women";
-  };
-};
-
-export default async function ShopPage({ params }: Params) {
+export default async function ShopPage({
+  params,
+}: {
+  params: Promise<{ category: "men" | "women" }>;
+}) {
   const { category } = await params;
 
   return (
