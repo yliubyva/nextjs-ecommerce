@@ -85,12 +85,7 @@ export const SearchBar = () => {
     }
   }, [activeSuggestionIndex]);
   return (
-    <div
-      className="relative"
-      role="combobox"
-      aria-haspopup="listbox"
-      aria-expanded={isFocused}
-    >
+    <div className="relative">
       <form
         onSubmit={handleSearchSubmit}
         className="flex h-[48px] w-full max-w-[577px] items-center justify-evenly gap-[10px] bg-white px-[8px] py-[6px] text-stone-300"
@@ -125,10 +120,13 @@ export const SearchBar = () => {
               setIsFocused(false);
             }}
             onKeyDown={handleKeyDown}
+            role="combobox"
+            aria-haspopup="listbox"
+            aria-expanded={isFocused}
             aria-controls="suggestions-list"
             aria-activedescendant={
               activeSuggestionIndex !== -1
-                ? `suggestion=${activeSuggestionIndex}`
+                ? `suggestion-${activeSuggestionIndex}`
                 : undefined
             }
           />
