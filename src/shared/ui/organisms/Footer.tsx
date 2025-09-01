@@ -41,26 +41,29 @@ export function Footer() {
 
   return (
     <Container>
-      <div className="relative pt-[190px] pb-[77px] md:pt-[100px] xl:pt-[140px] xl:pb-[92px]">
-        <div className="absolute inset-x-3 top-[-135px] flex flex-col items-center rounded-[20px] bg-black p-[24px] md:top-[-80px] md:flex-row md:justify-between xl:inset-x-0.5 xl:top-[-100px] xl:px-[64px] xl:py-[43px]">
-          <h2 className="font-hubot mb-[32px] w-full max-w-[297px] text-2xl font-black text-white md:mb-0 md:max-w-[400px] xl:max-w-[560px] xl:text-4xl">
+      <div className="relative pt-[190px] pb-[77px] md:pt-25 xl:pt-[140px] xl:pb-[92px]">
+        <div className="absolute inset-x-3 top-[-135px] flex flex-col items-center rounded-[20px] bg-black p-6 md:-top-20 md:flex-row md:justify-between xl:inset-x-0.5 xl:-top-25 xl:px-16 xl:py-[43px]">
+          <h2 className="font-hubot mb-8 w-full max-w-[297px] text-2xl font-black text-white md:mb-0 md:max-w-100 xl:max-w-[560px] xl:text-4xl">
             STAY UPTO DATE ABOUT OUR LATEST OFFERS
           </h2>
           <NewsletterForm />
         </div>
-        <div className="mb-[40px] grid grid-cols-2 gap-y-[25px] md:mb-[50px] md:grid-cols-5">
+        <div className="mb-10 grid grid-cols-2 gap-y-[25px] md:mb-[50px] md:grid-cols-5">
           <div className="col-span-2 md:col-span-1">
-            <Link href="/">
+            <Link
+              href="/"
+              className="relative mb-3.5 block h-7.5 w-[144px] xl:mb-[25px] xl:h-[33px] xl:w-[167px]"
+            >
               <Image
                 src="/logo.svg"
-                width={144}
-                height={20}
+                fill
                 alt="logo"
                 priority={true}
-                className="mb-[14px] h-[30px] w-[144px] xl:mb-[25px] xl:h-[33px] xl:w-[167px]"
+                sizes="100vw"
+                className="h-auto w-full"
               />
             </Link>
-            <p className="text-primary mb-[20px] text-sm xl:mb-[35px]">
+            <p className="text-primary mb-4 text-sm xl:mb-[35px]">
               We have clothes that suits your style and which you’re proud to
               wear. From women to men.
             </p>
@@ -68,10 +71,10 @@ export function Footer() {
           </div>
           {footerInfo.map((item, index) => (
             <div key={index} className="md:justify-self-end">
-              <p className="mb-[16px] font-normal tracking-widest uppercase xl:mb-[26px]">
+              <p className="mb-4 font-normal tracking-widest uppercase xl:mb-6.5">
                 {item.title}
               </p>
-              <ul className="flex flex-col gap-[10px]">
+              <ul className="flex flex-col gap-2.5">
                 {item.list.map((listItem, i) => (
                   <li key={i} className="text-primary cursor-pointer text-sm">
                     {listItem}
@@ -81,8 +84,8 @@ export function Footer() {
             </div>
           ))}
         </div>
-        <Divider addClass="mb-[16px] xl:mb-[21px]" />
-        <div className="flex flex-col items-center justify-between gap-[16px] xl:flex-row">
+        <Divider addClass="mb-4 xl:mb-5" />
+        <div className="flex flex-col items-center justify-between gap-4 xl:flex-row">
           <p className="text-primary text-sm">
             Shop.co © 2000-2023, All Rights Reserved
           </p>

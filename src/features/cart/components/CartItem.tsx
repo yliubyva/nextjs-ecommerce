@@ -34,7 +34,7 @@ export const CartItem: React.FC<Props> = ({
     (item) => item.name === color,
   );
   return (
-    <div className="flex w-full min-w-[330px] items-center gap-[14px] md:gap-[16px]">
+    <div className="flex w-full min-w-[300px] items-center gap-[14px] md:gap-[16px]">
       <div className="h-[99px] w-full max-w-[99px] overflow-hidden rounded-[9px] md:h-[124px] md:max-w-[124px]">
         <Image
           src={product.colors[colorIndex].images[0]}
@@ -49,7 +49,7 @@ export const CartItem: React.FC<Props> = ({
           <div className="flex items-center justify-between">
             <Link
               href={`/shop/${product.category.toLowerCase()}/${product.id}`}
-              className="text-base font-medium md:text-xl"
+              className="w-full max-w-[150px] overflow-hidden text-base font-medium text-nowrap text-ellipsis md:max-w-[530px] md:text-xl"
             >
               {product.title}
             </Link>

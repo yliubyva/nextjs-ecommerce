@@ -50,7 +50,7 @@ export const Navigation = () => {
   }, [pathname]);
   return (
     <>
-      <div className="flex items-center gap-[16px] xl:gap-[0]">
+      <div className="flex items-center gap-4 xl:gap-0">
         <button
           onClick={() => toggleSection("menu")}
           className="h-[24px] w-[24px] cursor-pointer md:hidden"
@@ -61,21 +61,21 @@ export const Navigation = () => {
             <Burger width={24} height={24} />
           )}
         </button>
-        <Link href="/">
+        <Link href="/" className="relative h-4.5 w-[126px] xl:h-7.5 xl:w-[160px]">
           <Image
             src="/logo.svg"
-            width={126}
-            height={18}
+            fill
             alt="logo"
             priority={true}
-            className="h-[18px] w-[126px] xl:h-[30px] xl:w-[160px]"
+            sizes="100vw"
+            className="h-auto w-full"
           />
         </Link>
       </div>
-      <nav>
+      <nav id="main-menu">
         <div
           className={clsx(
-            "absolute top-[64px] right-0 -z-1 h-screen w-full bg-white/20 backdrop-blur-sm transition-opacity duration-300 ease-in-out md:hidden",
+            "absolute top-16 right-0 -z-1 h-screen w-full bg-white/20 backdrop-blur-sm transition-opacity duration-300 ease-in-out md:hidden",
             openState.menu
               ? "translate-x-0 opacity-100"
               : "-translate-x-full opacity-0",
@@ -84,7 +84,7 @@ export const Navigation = () => {
         <ul
           ref={menuRef}
           className={clsx(
-            "absolute top-[64px] left-0 z-50 flex h-screen w-[80%] flex-col gap-[50px] bg-black pt-[30px] pb-[30px] pl-[20px] text-white transition-transform duration-300 ease-in-out md:static md:h-full md:w-full md:translate-x-0 md:flex-row md:items-center md:gap-[24px] md:bg-transparent md:p-0 md:text-black",
+            "absolute top-16 left-0 z-50 flex h-screen w-[80%] flex-col gap-12.5 bg-black pt-7.5 pb-7.5 pl-5 text-white transition-transform duration-300 ease-in-out md:static md:h-full md:w-full md:translate-x-0 md:flex-row md:items-center md:gap-6 md:bg-transparent md:p-0 md:text-black",
             openState.menu ? "translate-x-0" : "-translate-x-full",
           )}
         >
@@ -100,7 +100,7 @@ export const Navigation = () => {
               Shop
               <Arrow
                 className={clsx(
-                  "relative z-2 h-[13px] w-[13px] fill-white transition duration-300 ease-in-out md:fill-black",
+                  "relative z-2 h-3.25 w-3.25 fill-white transition duration-300 ease-in-out md:fill-black",
                   openState.shop && "rotate-180",
                 )}
               />
@@ -108,10 +108,10 @@ export const Navigation = () => {
 
             <div
               className={clsx(
-                "transition-translate ml-[30px] flex flex-col justify-center gap-[30px] duration-200 ease-in-out md:absolute md:top-[45px] md:ml-0 md:h-[100px] md:w-[100px] md:bg-white md:pl-[10px] md:drop-shadow-xs xl:top-[50px]",
+                "transition-translate ml-7.5 flex flex-col justify-center gap-7.5 duration-200 ease-in-out md:absolute md:top-[45px] md:ml-0 md:h-[100px] md:w-[100px] md:bg-white md:pl-2.5 md:drop-shadow-xs xl:top-12.5",
                 openState.shop
                   ? "h-full translate-y-0 opacity-100"
-                  : "relative -z-1 hidden h-0 -translate-y-[30px] opacity-0",
+                  : "relative -z-1 hidden h-0 -translate-y-7.5 opacity-0",
               )}
               onMouseLeave={() =>
                 setOpenState((prev) => ({ ...prev, shop: false }))

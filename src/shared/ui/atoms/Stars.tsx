@@ -23,7 +23,7 @@ export const Stars: React.FC<Props> = ({ rating, showNum }) => {
             alt="star icon"
             width={16}
             height={16}
-            className="xl:h-[18px] xl:w-[18px]"
+            className="h-4 w-4 xl:h-[18px] xl:w-[18px]"
           />
         ))}
         {hasHalfStar && (
@@ -33,7 +33,7 @@ export const Stars: React.FC<Props> = ({ rating, showNum }) => {
             alt="star icon"
             width={8}
             height={16}
-            className="md:h-[18px] md:w-[9px]"
+            className="h-4 w-2 md:h-[18px] md:w-[9px]"
           />
         )}
       </div>

@@ -51,13 +51,13 @@ export const ThumbProductCarousel: React.FC<PropType> = ({ slides, axis }) => {
               className="min-w-0 flex-[0_0_100%] pl-[16px] lg:min-h-0 lg:flex-[0_0_530px] lg:pt-[2px] lg:pl-0"
               key={index}
             >
-              <div className="flex h-[290px] w-full items-center justify-center overflow-hidden rounded-[20px] select-none sm:h-full lg:w-[444px] lg:flex-col">
+              <div className="relative flex h-[290px] w-full items-center justify-center overflow-hidden rounded-[20px] select-none sm:h-full lg:w-[444px] lg:flex-col">
                 <Image
                   src={item}
                   alt="product image"
-                  width={358}
-                  height={253}
-                  loading="lazy"
+                  fill
+                  priority
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   className="h-[290px] w-full min-w-[312px] object-cover sm:h-full lg:max-h-[530px]"
                 />
               </div>

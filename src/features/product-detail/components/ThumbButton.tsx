@@ -17,15 +17,16 @@ export const Thumb: React.FC<PropType> = (props) => {
         onClick={onClick}
         type="button"
         className={clsx(
-          "flex h-[106px] w-full cursor-pointer touch-manipulation items-center justify-center overflow-hidden rounded-[20px] sm:h-[168px] lg:h-full lg:max-h-[168px] lg:flex-col",
+          "relative flex h-[106px] w-full cursor-pointer touch-manipulation items-center justify-center overflow-hidden rounded-[20px] sm:h-[168px] lg:h-full lg:max-h-[168px] lg:flex-col",
           selected && "border border-black",
         )}
       >
         <Image
           src={src}
           alt="product image"
-          width={111}
-          height={106}
+          fill
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          priority
           className="h-full w-full min-w-[111px] object-cover lg:h-[168px] lg:w-[152px]"
         />
       </button>
