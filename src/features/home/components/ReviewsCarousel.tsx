@@ -5,7 +5,6 @@ import {
   NextButton,
   usePrevNextButtons,
 } from "@/features/home/components/ArrowButtons";
-import Image from "next/image";
 import { Stars } from "@/shared/ui/atoms/Stars";
 import { Container } from "@/shared/ui/atoms/Container";
 import { useWindowWidth } from "@/shared/hooks/useWindowWidth";

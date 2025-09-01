@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useWindowWidth } from "@/shared/hooks/useWindowWidth";
 import { ThumbProductCarousel } from "@/features/product-detail/components/ThumbProductCarousel";
 import { Divider } from "@/shared/ui/atoms/Divider";
