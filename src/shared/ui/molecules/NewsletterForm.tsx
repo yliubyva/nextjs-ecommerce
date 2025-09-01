@@ -1,10 +1,13 @@
 "use client";
 import { useState } from "react";
 import Mail from "@public/icons/icon-mail.svg";
+import Check from "@public/icons/checkmark-white.svg";
+import { Modal } from "../atoms/Modal";
 
 export const NewsletterForm = () => {
   const [email, setEmail] = useState("");
   const [error, setError] = useState("");
+  const [isOpen, setIsOpen] = useState(false);
 
   const handleBlur = () => {
     if (!email) {
@@ -26,18 +29,24 @@ export const NewsletterForm = () => {
 
     if (error) return;
 
+    if (!email) {
+      setError("Please enter an email address.");
+      return;
+    }
+
     console.log("Subscribed email: ", email);
 
+    setIsOpen(true);
     setEmail("");
   };
 
   return (
     <form
       onSubmit={handleSubmit}
-      className="flex w-full max-w-[311px] flex-col gap-[12px]"
+      className="flex w-full max-w-[311px] flex-col gap-3"
     >
       <div>
-        <div className="flex h-[42px] w-full items-center gap-[15px] rounded-[60px] bg-white px-[16px]">
+        <div className="flex h-[42px] w-full items-center gap-[15px] rounded-[60px] bg-white px-4">
           <Mail className="fill-[#00000040]" />
           <input
             type="text"
@@ -54,6 +63,18 @@ export const NewsletterForm = () => {
       <button className="hover:bg-badge flex h-[42px] w-full cursor-pointer items-center justify-center rounded-[60px] border bg-white text-sm font-normal transition delay-150 duration-300 ease-in-out hover:border-white">
         Subscribe to Newsletter
       </button>
+
+      <Modal title="" isOpen={isOpen} onClose={() => setIsOpen(false)}>
+        <div className="flex flex-col items-center justify-center gap-2">
+          <div className="relative flex h-14 w-14 animate-bounce items-center justify-center rounded-full bg-emerald-500">
+            <Check className="fill-white" />
+          </div>
+          <p className="text-xl font-medium">
+            Thank you for subscribing to our newsletter!
+          </p>
+          <p>We’ve received your email.</p>
+        </div>
+      </Modal>
     </form>
   );
 };
