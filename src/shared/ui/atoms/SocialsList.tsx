@@ -15,10 +15,11 @@ export function SocialsList() {
     { name: "github", component: <GitHub />, src: "http://github.com" },
   ];
   return (
-    <ul className="flex gap-[12px]">
+    <ul aria-label="Social media" className="flex gap-[12px]">
       {socialsList.map((item) => (
         <li key={item.name}>
           <a
+            aria-label={item.name}
             href={item.src}
             className="border-secondary flex h-[28px] w-[28px] items-center justify-center rounded-full border bg-white transition-all delay-100 ease-in hover:bg-black hover:fill-white"
           >

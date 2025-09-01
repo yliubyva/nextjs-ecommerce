@@ -27,7 +27,7 @@ export const ProductCatalog: React.FC<Props> = ({ title }) => {
   });
 
   return (
-    <div className="md:flex md:gap-[20px]">
+    <div className="md:flex md:gap-5">
       <div className="md:w-full md:max-w-[295px]">
         <Filters
           isOpen={isOpenFilters}
@@ -37,9 +37,9 @@ export const ProductCatalog: React.FC<Props> = ({ title }) => {
       </div>
       <div className="grid w-full grid-cols-1 grid-rows-[32px_1fr_57px] gap-[25px] md:grid-rows-[44px_1fr_60px]">
         <div className="flex items-center justify-between">
-          <div className="flex items-end gap-[8px] md:w-full md:items-center md:justify-between">
+          <div className="flex items-end gap-2 md:w-full md:items-center md:justify-between">
             <h1 className="text-2xl font-normal">{title}</h1>
-            <div className="flex items-center gap-[12px]">
+            <div className="flex items-center gap-3">
               <p className="text-primary w-[230px]">
                 Showing {showingEnd === 0 ? 0 : showingStart}-{showingEnd} of{" "}
                 {totalItems} Products
@@ -51,15 +51,16 @@ export const ProductCatalog: React.FC<Props> = ({ title }) => {
             </div>
           </div>
           <button
-            className="bg-category-background cursor-pointer rounded-full p-[8px] md:hidden"
+            className="bg-category-background cursor-pointer rounded-full p-2 md:hidden"
+            aria-label="Open filters"
             onClick={() => setIsOpenFilters(true)}
           >
-            <FilterIcon className="h-[16px] w-[16px]" />
+            <FilterIcon className="h-4 w-4" />
           </button>
         </div>
         <ProductsGrid products={currentProducts} />
         <div>
-          <Divider addClass="mb-[20px]" />
+          <Divider addClass="mb-5" />
           <Pagination />
         </div>
       </div>

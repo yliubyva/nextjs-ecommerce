@@ -38,7 +38,11 @@ export const Filters: React.FC<FiltersProps> = ({
         >
           <div className="mb-[16px] flex items-center justify-between">
             <p className="text-xl font-normal">Filters</p>
-            <button onClick={onClose} className="cursor-pointer p-[4px]">
+            <button
+              onClick={onClose}
+              aria-label="Close filters"
+              className="cursor-pointer p-[4px]"
+            >
               <CloseIcon className="h-[16px] w-[16px] fill-black" />
             </button>
           </div>

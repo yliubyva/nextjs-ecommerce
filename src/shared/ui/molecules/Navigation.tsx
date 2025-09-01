@@ -53,7 +53,10 @@ export const Navigation = () => {
       <div className="flex items-center gap-4 xl:gap-0">
         <button
           onClick={() => toggleSection("menu")}
-          className="h-[24px] w-[24px] cursor-pointer md:hidden"
+          aria-label="Menu"
+          aria-expanded={openState.menu}
+          aria-controls="main-menu"
+          className="h-6 w-6 cursor-pointer md:hidden"
         >
           {openState.menu ? (
             <Close width={20} height={20} />

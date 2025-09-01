@@ -25,11 +25,21 @@ export const UserActions = () => {
         <div className="flex gap-[12px]">
           <button
             className="cursor-pointer"
+            aria-label="Open search dialog"
+            aria-haspopup="dialog"
             onClick={() => setIsOpenModal(true)}
           >
             <Search width={24} height={24} className="fill-black" />
           </button>
-          <Link href="/cart" className="relative">
+          <Link
+            href="/cart"
+            className="relative"
+            aria-label={
+              totalQuantities >= 1
+                ? `Cart, ${totalQuantities} items`
+                : "Cart, empty"
+            }
+          >
             {totalQuantities >= 1 && (
               <div className="absolute top-[-10px] left-[15px] flex h-[20px] w-[20px] items-center justify-center rounded-full bg-red-400 text-xs text-white">
                 {totalQuantities}
