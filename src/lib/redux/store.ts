@@ -4,13 +4,14 @@ import ProductsReducer from "@/features/products/store/productsSlice";
 import CartReducer from "@/features/cart/store/cartSlice";
 import { ThunkAction, UnknownAction } from "@reduxjs/toolkit";
 
-export const makeStore = () => {
+export const makeStore = (preloadedState?: unknown) => {
   return configureStore({
     reducer: {
       products: ProductsReducer,
       filters: FiltersReducer,
       cart: CartReducer,
     },
+    preloadedState,
   });
 };
 

@@ -8,6 +8,7 @@ import { selectTotalQuantities } from "@/features/cart/store/cartSelectors";
 import { useState } from "react";
 import { Modal } from "../atoms/Modal";
 import { SearchBar } from "../atoms/SearchBar";
+import { NoSSR } from "../atoms/NoSSR";
 
 export const UserActions = () => {
   const [isOpenModal, setIsOpenModal] = useState(false);
@@ -31,22 +32,24 @@ export const UserActions = () => {
           >
             <Search width={24} height={24} className="fill-black" />
           </button>
-          <Link
-            href="/cart"
-            className="relative"
-            aria-label={
-              totalQuantities >= 1
-                ? `Cart, ${totalQuantities} items`
-                : "Cart, empty"
-            }
-          >
-            {totalQuantities >= 1 && (
-              <div className="absolute top-[-10px] left-[15px] flex h-[20px] w-[20px] items-center justify-center rounded-full bg-red-400 text-xs text-white">
-                {totalQuantities}
-              </div>
-            )}
-            <Cart width={24} height={24} />
-          </Link>
+          <NoSSR>
+            <Link
+              href="/cart"
+              className="relative"
+              aria-label={
+                totalQuantities >= 1
+                  ? `Cart, ${totalQuantities} items`
+                  : "Cart, empty"
+              }
+            >
+              {totalQuantities >= 1 && (
+                <div className="absolute top-[-10px] left-[15px] flex h-[20px] w-[20px] items-center justify-center rounded-full bg-red-400 text-xs text-white">
+                  {totalQuantities}
+                </div>
+              )}
+              <Cart width={24} height={24} />
+            </Link>
+          </NoSSR>
           <Account width={24} height={24} />
         </div>
       </div>
