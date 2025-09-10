@@ -79,6 +79,7 @@ export const Filters: React.FC<FiltersProps> = ({
         <p className="text-xl font-normal">Filters</p>
         <Filter className="h-[20px] w-[20px] fill-black" />
       </div>
+      <Divider />
       <FiltersBody />
     </aside>
   );
@@ -109,7 +110,7 @@ const FiltersBody: React.FC<FiltersBodyProps> = ({ onClose }) => {
       </FilterDropdown>
       <button
         onClick={() => {
-          dispatch(resetFilters())          
+          dispatch(resetFilters())
           if (onClose) onClose();
         }}
         className="w-full cursor-pointer"
