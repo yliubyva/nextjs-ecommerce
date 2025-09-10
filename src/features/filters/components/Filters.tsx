@@ -1,4 +1,5 @@
 import clsx from "clsx";
+import { useEffect } from "react";
 import { Divider } from "@/shared/ui/atoms/Divider";
 import { MultiColorSelect } from "@/shared/ui/molecules/SelectColor";
 import { MultiSizeSelect } from "@/shared/ui/molecules/SelectSize";
@@ -21,6 +22,17 @@ export const Filters: React.FC<FiltersProps> = ({
   onClose,
   isMobile,
 }) => {
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [isOpen]);
   if (isMobile) {
     return (
       <div
@@ -29,24 +41,33 @@ export const Filters: React.FC<FiltersProps> = ({
           isOpen ? "visible opacity-100" : "opacity-0",
         )}
       >
-        <div className="absolute top-0 right-0 bottom-0 left-0 bg-black/20 transition-all duration-700 ease-in-out"></div>
+        <div
+          className="absolute top-0 right-0 bottom-0 left-0 bg-black/20 transition-all duration-700 ease-in-out"
+          onClick={onClose}
+        ></div>
         <div
           className={clsx(
-            "border-secondary absolute top-[60px] bottom-0 left-0 w-full overflow-auto rounded-tl-[20px] rounded-tr-[20px] border bg-white px-[24px] py-[20px] transition-transform duration-700 ease-in-out",
+            "border-secondary absolute bottom-0 left-0 flex max-h-[calc(100vh_-_60px)] w-full flex-col overflow-y-auto rounded-tl-[20px] rounded-tr-[20px] border bg-white transition-transform duration-700 ease-in-out",
             isOpen ? "-translate-y-0" : "translate-y-full",
           )}
+          onClick={(e) => e.stopPropagation()}
         >
-          <div className="mb-[16px] flex items-center justify-between">
-            <p className="text-xl font-normal">Filters</p>
-            <button
-              onClick={onClose}
-              aria-label="Close filters"
-              className="cursor-pointer p-[4px]"
-            >
-              <CloseIcon className="h-[16px] w-[16px] fill-black" />
-            </button>
+          <div className="sticky top-0 z-10 bg-white px-6">
+            <div className="mb-4 flex items-center justify-between pt-5">
+              <p className="text-xl font-normal">Filters</p>
+              <button
+                onClick={onClose}
+                aria-label="Close filters"
+                className="cursor-pointer p-1"
+              >
+                <CloseIcon className="h-4 w-4 fill-black" />
+              </button>
+            </div>
+            <Divider />
           </div>
-          <FiltersBody />
+          <div className="h-full grow-1 px-6 pb-5">
+            <FiltersBody onClose={onClose} />
+          </div>
         </div>
       </div>
     );
@@ -63,12 +84,15 @@ export const Filters: React.FC<FiltersProps> = ({
   );
 };
 
-const FiltersBody = () => {
+type FiltersBodyProps = {
+  onClose?: () => void;
+}
+
+const FiltersBody: React.FC<FiltersBodyProps> = ({ onClose }) => {
   const dispatch = useAppDispatch();
   return (
     <>
-      <Divider />
-      <div className="my-[20px]">
+      <div className="my-5">
         <SelectType />
       </div>
       <Divider />
@@ -84,7 +108,10 @@ const FiltersBody = () => {
         <MultiSizeSelect />
       </FilterDropdown>
       <button
-        onClick={() => dispatch(resetFilters())}
+        onClick={() => {
+          dispatch(resetFilters())          
+          if (onClose) onClose();
+        }}
         className="w-full cursor-pointer"
       >
         <span className="hover:border-b">Reset Filters</span>
