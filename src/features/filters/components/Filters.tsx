@@ -47,7 +47,7 @@ export const Filters: React.FC<FiltersProps> = ({
         ></div>
         <div
           className={clsx(
-            "border-secondary absolute bottom-0 left-0 flex max-h-[calc(100vh_-_60px)] w-full flex-col overflow-y-auto rounded-tl-[20px] rounded-tr-[20px] border bg-white transition-transform duration-700 ease-in-out",
+            "border-secondary filter-modal-height absolute bottom-0 left-0 flex w-full flex-col overflow-y-auto rounded-tl-[20px] rounded-tr-[20px] border bg-white transition-transform duration-700 ease-in-out",
             isOpen ? "-translate-y-0" : "translate-y-full",
           )}
           onClick={(e) => e.stopPropagation()}
@@ -87,7 +87,7 @@ export const Filters: React.FC<FiltersProps> = ({
 
 type FiltersBodyProps = {
   onClose?: () => void;
-}
+};
 
 const FiltersBody: React.FC<FiltersBodyProps> = ({ onClose }) => {
   const dispatch = useAppDispatch();
@@ -110,7 +110,7 @@ const FiltersBody: React.FC<FiltersBodyProps> = ({ onClose }) => {
       </FilterDropdown>
       <button
         onClick={() => {
-          dispatch(resetFilters())
+          dispatch(resetFilters());
           if (onClose) onClose();
         }}
         className="w-full cursor-pointer"
