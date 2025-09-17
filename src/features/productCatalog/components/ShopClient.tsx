@@ -6,7 +6,11 @@ import {
   setSearchQuery,
   setSelectedGender,
 } from "@/features/products/store/productsSlice";
-import { initializeAvailableOptions } from "@/features/filters/store/filtersSlice";
+import {
+  initializeAvailableOptions,
+  resetFilters,
+  setCategory,
+} from "@/features/filters/store/filtersSlice";
 import { extractFilterOptionsFromProducts } from "@/features/filters/utils/extract-filter-options";
 import { filterByCategory } from "@/features/products/utils/product-filters";
 import { useProductFilterAndPagination } from "../hooks/useProductFilterAndPagination";
@@ -22,6 +26,14 @@ export const ShopClient: React.FC<Props> = ({ category }) => {
   const dispatch = useAppDispatch();
 
   const { searchQuery } = useAppSelector((state) => state.products);
+  const currentCategory = useAppSelector((state) => state.filters.category);
+
+  useEffect(() => {
+    if (category && category !== currentCategory) {
+      dispatch(setCategory(category));
+      dispatch(resetFilters());
+    }
+  }, [category, currentCategory, dispatch]);
 
   useEffect(() => {
     dispatch(setSelectedGender(category));

@@ -22,11 +22,13 @@ export interface FilterSelectedOptions {
 }
 
 interface FilterState {
+  category: string | null;
   available: FilterAvailableOptions;
   selected: FilterSelectedOptions;
 }
 
 const initialState: FilterState = {
+  category: null,
   available: {
     colors: [],
     sizes: [],
@@ -91,6 +93,9 @@ const FiltersSlice = createSlice({
         ],
       };
     },
+    setCategory(state, action: PayloadAction<string>) {
+      state.category = action.payload;
+    },
   },
 });
 
@@ -101,6 +106,7 @@ export const {
   toggleTypes,
   togglePriceRange,
   resetFilters,
+  setCategory,
 } = FiltersSlice.actions;
 
 export default FiltersSlice.reducer;
