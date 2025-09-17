@@ -8,17 +8,24 @@ import { useAppDispatch } from "@/lib/redux/redux-hooks";
 import { sortProducts } from "@/features/products/store/productsSlice";
 import { SortType } from "@/features/products/utils/product-sorts";
 import { useRouter } from "next/navigation";
+import { TypeClothesName } from "../types/clothes";
+import { toggleTypes } from "@/features/filters/store/filtersSlice";
+import clsx from "clsx";
 
 type Props = {
   title: string;
   productList: Product[];
   sortType: SortType;
+  filterOption?: TypeClothesName;
+  category?: string;
 };
 
 export const ProductsPreviewList: React.FC<Props> = ({
   title,
   productList,
   sortType,
+  filterOption,
+  category,
 }) => {
   const width = useWindowWidth();
   const isMobile = width < 1240;
@@ -27,8 +34,13 @@ export const ProductsPreviewList: React.FC<Props> = ({
   const dispatch = useAppDispatch();
 
   const handleClick = () => {
-    dispatch(sortProducts(sortType));
-    router.push("/shop");
+    if (filterOption && category) {
+      dispatch(toggleTypes(filterOption));
+      router.push(`/shop/${category}`);
+    } else {
+      dispatch(sortProducts(sortType));
+      router.push("/shop");
+    }
   };
 
   const renderProductList = () => {
@@ -36,13 +48,15 @@ export const ProductsPreviewList: React.FC<Props> = ({
       return <ProductsCarousel slides={productList} />;
     } else {
       return (
-        <div className="flex gap-[16px]">
+        <div className={clsx("gap-[16px]", productList.length > 1 && "flex")}>
           {productList.map(
             (item, index) =>
               index < 4 && (
                 <div
                   key={index}
-                  className="flex w-full max-w-[300px] min-w-0 flex-[0_0_100%]"
+                  className={
+                    "w-full max-w-[300px] min-w-0 flex-[0_0_100%] xl:min-w-[300px]"
+                  }
                 >
                   <ProductCard
                     id={item.id}

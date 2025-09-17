@@ -4,6 +4,9 @@ import { Product } from "@/features/products/types/product";
 import { notFound } from "next/navigation";
 import { Stars } from "@/shared/ui/atoms/Stars";
 import { Price } from "@/shared/ui/atoms/Price";
+import { getAllProducts } from "@/lib/api/products";
+import { ProductsPreviewList } from "@/features/products/components/ProductsPreviewList";
+import { filterByCategory } from "@/features/products/utils/product-filters";
 
 export default async function ProductDetailPage({
   params,
@@ -20,22 +23,42 @@ export default async function ProductDetailPage({
     return notFound();
   }
 
+  const allProducts = await getAllProducts();
+  const filteredByCategoryProducts = filterByCategory(allProducts, category);
+  const alsoLikeProducts = filteredByCategoryProducts
+    .filter((p) => {
+      return p.type === product.type && p.id !== product.id;
+    })
+    .sort(() => 0.5 - Math.random())
+    .slice(0, 4);
+
   return (
     <Container>
-      <ProductDetailClient product={product}>
-        <div className="mb-[24px]">
-          <div className="mb-[20px] flex flex-col gap-[12px]">
-            <h1 className="font-hubot text-2xl font-black uppercase xl:w-[600px] xl:text-4xl">
-              {product.title}
-            </h1>
-            <Stars rating={product.rating} showNum />
-            <Price price={product.price} discount={product.discount} />
+      <div className="mb-5 md:mb-16">
+        <ProductDetailClient product={product}>
+          <div className="mb-[24px]">
+            <div className="mb-[20px] flex flex-col gap-[12px]">
+              <h1 className="font-hubot text-2xl font-black uppercase xl:w-[600px] xl:text-4xl">
+                {product.title}
+              </h1>
+              <Stars rating={product.rating} showNum />
+              <Price price={product.price} discount={product.discount} />
+            </div>
+            <p className="text-sm text-(--color-text-primary) xl:text-base">
+              {product.description}
+            </p>
           </div>
-          <p className="text-sm text-(--color-text-primary) xl:text-base">
-            {product.description}
-          </p>
-        </div>
-      </ProductDetailClient>
+        </ProductDetailClient>
+      </div>
+      {alsoLikeProducts.length > 0 && (
+        <ProductsPreviewList
+          title="You might also like"
+          productList={alsoLikeProducts}
+          sortType="newest"
+          category={category}
+          filterOption={product.type}
+        />
+      )}
     </Container>
   );
 }

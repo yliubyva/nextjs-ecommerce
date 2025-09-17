@@ -617,7 +617,7 @@ export const products: Product[] = [
     id: "jeans-010",
     title: "Urban Classic Ripped Jeans",
     category: "Women",
-    type: "T-shirt",
+    type: "Jeans",
     brand: "Gucci",
     price: 195,
     discount: 20,
